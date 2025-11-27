@@ -1,125 +1,190 @@
-<p align="center">
-  <a href="https://www.medusajs.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    </picture>
-  </a>
-</p>
+# Geowags - Premium Housewares & Tiles
 
-<h1 align="center">
-  Medusa Next.js Starter Template
-</h1>
+A modern, elegant website for **Geowags**, Ghana's premier supplier of high-quality housewares, tiles, bathroom fixtures, and home-improvement products.
 
-<p align="center">
-Combine Medusa's modules for your commerce backend with the newest Next.js 15 features for a performant storefront.</p>
+## 🚀 Features
 
-<p align="center">
-  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
-  </a>
-  <a href="https://discord.gg/xpCwq3Kfn8">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
-    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
-  </a>
-</p>
+### Phase 1 (Current)
+- **Homepage** - Hero banner, category highlights, featured collections, brand overview
+- **Product Catalog** - Category-based browsing with filters (collection, color, size, finish)
+- **Product Detail Pages** - High-quality images, descriptions, specifications, variants
+- **About Page** - Company history, mission, values, milestones
+- **Contact Page** - Contact form, phone, email, location
+- **Admin Dashboard** - Product management, categories, inquiries
+
+### Phase 2 (Future)
+- Full eCommerce functionality
+- Paystack payment integration
+- Customer accounts
+- Order & inventory management
+- Wishlists and quotations
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** TailwindCSS 4.0 + Custom CSS
+- **Database:** Prisma + SQLite (dev) / PostgreSQL (production)
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Forms:** React Hook Form + Zod
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── (admin)/          # Admin dashboard routes
+│   │   └── admin/
+│   │       ├── products/
+│   │       └── page.tsx
+│   ├── (public)/         # Public website routes
+│   │   ├── about/
+│   │   ├── contact/
+│   │   ├── products/
+│   │   └── page.tsx
+│   ├── globals.css       # Design system & styles
+│   └── layout.tsx        # Root layout
+├── components/
+│   ├── home/             # Homepage sections
+│   ├── layout/           # Header, Footer, Logo
+│   └── products/         # Product cards, grid, filters
+├── lib/
+│   ├── constants.ts      # Site config, navigation
+│   ├── db.ts            # Prisma client
+│   ├── types.ts         # TypeScript types
+│   └── utils.ts         # Utility functions
+└── prisma/
+    ├── schema.prisma    # Database schema
+    └── seed.ts          # Demo data
+```
+
+## 🎨 Design System
+
+### Colors
+- **Primary (Red):** `#C41E3A` - Brand color, CTAs
+- **Accent (Teal):** `#0D9488` - Highlights
+- **White:** Dominant background
+- **Grays:** Text and subtle backgrounds
+
+### Typography
+- **Display:** Playfair Display (headings)
+- **Body:** Inter (body text)
+
+## 🚀 Getting Started
 
 ### Prerequisites
+- Node.js 18+
+- npm or pnpm
 
-To use the [Next.js Starter Template](https://medusajs.com/nextjs-commerce/), you should have a Medusa server running locally on port 9000.
-For a quick setup, run:
+### Installation
 
-```shell
-npx create-medusa-app@latest
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd geowags
 ```
 
-Check out [create-medusa-app docs](https://docs.medusajs.com/learn/installation) for more details and troubleshooting.
-
-# Overview
-
-The Medusa Next.js Starter is built with:
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Medusa](https://medusajs.com/)
-
-Features include:
-
-- Full ecommerce support:
-  - Product Detail Page
-  - Product Overview Page
-  - Product Collections
-  - Cart
-  - Checkout with Stripe
-  - User Accounts
-  - Order Details
-- Full Next.js 15 support:
-  - App Router
-  - Next fetching/caching
-  - Server Components
-  - Server Actions
-  - Streaming
-  - Static Pre-Rendering
-
-# Quickstart
-
-### Setting up the environment variables
-
-Navigate into your projects directory and get your environment variables ready:
-
-```shell
-cd nextjs-starter-medusa/
-mv .env.template .env.local
+2. Install dependencies:
+```bash
+npm install
 ```
 
-### Install dependencies
+3. Set up the database:
+```bash
+# Create .env file with DATABASE_URL
+echo 'DATABASE_URL="file:./dev.db"' > .env
 
-Use Yarn to install all dependencies.
+# Push schema to database
+npm run db:push
 
-```shell
-yarn
+# Seed with demo data
+npm run db:seed
 ```
 
-### Start developing
-
-You are now ready to start up your project.
-
-```shell
-yarn dev
+4. Run the development server:
+```bash
+npm run dev
 ```
 
-### Open the code and start customizing
+5. Open [http://localhost:3000](http://localhost:3000)
 
-Your site is now running at http://localhost:8000!
+### Available Scripts
 
-# Payment integrations
-
-By default this starter supports the following payment integrations
-
-- [Stripe](https://stripe.com/)
-
-To enable the integrations you need to add the following to your `.env.local` file:
-
-```shell
-NEXT_PUBLIC_STRIPE_KEY=<your-stripe-public-key>
+```bash
+npm run dev        # Start development server
+npm run build      # Build for production
+npm run start      # Start production server
+npm run lint       # Run ESLint
+npm run db:push    # Push schema to database
+npm run db:seed    # Seed database with demo data
+npm run db:studio  # Open Prisma Studio
 ```
 
-You'll also need to setup the integrations in your Medusa server. See the [Medusa documentation](https://docs.medusajs.com) for more information on how to configure [Stripe](https://docs.medusajs.com/resources/commerce-modules/payment/payment-provider/stripe#main).
+## 📱 Pages
 
-# Resources
+| Page | Route | Description |
+|------|-------|-------------|
+| Homepage | `/` | Hero, categories, featured products, about preview |
+| Products | `/products` | Product catalog with filters |
+| Product Detail | `/products/[slug]` | Individual product page |
+| About | `/about` | Company information |
+| Contact | `/contact` | Contact form and info |
+| Admin Dashboard | `/admin` | Admin overview |
+| Manage Products | `/admin/products` | Product CRUD |
+| Add Product | `/admin/products/new` | Create new product |
 
-## Learn more about Medusa
+## 🔧 Configuration
 
-- [Website](https://www.medusajs.com/)
-- [GitHub](https://github.com/medusajs)
-- [Documentation](https://docs.medusajs.com/)
+### Environment Variables
 
-## Learn more about Next.js
+```env
+DATABASE_URL="file:./dev.db"  # SQLite for development
+# DATABASE_URL="postgresql://..."  # PostgreSQL for production
+```
 
-- [Website](https://nextjs.org/)
-- [GitHub](https://github.com/vercel/next.js)
-- [Documentation](https://nextjs.org/docs)
+### Site Configuration
+
+Edit `src/lib/constants.ts` to update:
+- Site name and tagline
+- Contact information
+- Social media links
+- Navigation items
+- Product categories
+
+## 🚀 Deployment
+
+### DreamHost VPS
+
+1. Build the application:
+```bash
+npm run build
+```
+
+2. Copy to server:
+```bash
+scp -r .next package.json node_modules user@server:/path/to/app
+```
+
+3. Start with PM2:
+```bash
+pm2 start npm --name "geowags" -- start
+```
+
+### Environment Setup for Production
+
+1. Set up PostgreSQL database
+2. Update `DATABASE_URL` in production environment
+3. Run `npx prisma migrate deploy`
+4. Configure reverse proxy (Nginx)
+
+## 📄 License
+
+Private - All rights reserved.
+
+## 👥 Contact
+
+**Geowags**
+- Email: info@geowags.com
+- Phone: +233 XX XXX XXXX
+- Location: Accra, Ghana

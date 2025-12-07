@@ -118,7 +118,7 @@ export default function ContactPage() {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 bg-gray-50">
+      <section className="relative section bg-gray-50">
         <div className="container">
           <div className="max-w-2xl">
             <span className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium">
@@ -137,7 +137,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 bg-white border-b border-gray-200">
+      <section className="section bg-white border-b border-gray-200">
         <div className="container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info) => {
@@ -391,7 +391,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ CTA */}
-      <section className="py-16 bg-gray-50">
+      <section className="section bg-gray-50">
         <div className="container text-center">
           <h2 className="heading-3 text-gray-900 mb-4">Have More Questions?</h2>
           <p className="text-gray-600 mb-6">

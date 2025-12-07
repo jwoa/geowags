@@ -71,7 +71,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen min-h-[700px] overflow-hidden">
+    <section className="relative h-screen min-h-[600px] md:min-h-[700px] overflow-hidden">
       {/* Background Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -157,7 +157,7 @@ export const Hero = () => {
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn btn-large border-white/30 text-white hover:bg-white hover:text-gray-900"
+                  className="btn btn-outline btn-large border-white text-white hover:bg-white hover:text-gray-900"
                 >
                   Contact Us
                 </Link>

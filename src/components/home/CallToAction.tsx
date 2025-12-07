@@ -7,7 +7,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 
 export const CallToAction = () => {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section className="relative section overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
         {/* Decorative elements */}
@@ -74,7 +74,7 @@ export const CallToAction = () => {
 
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              className="btn btn-large border-white/30 text-white hover:bg-white hover:text-gray-900 group"
+              className="btn btn-outline btn-large border-white text-white hover:bg-white hover:text-gray-900 group"
             >
               <Phone className="w-5 h-5" />
               Call Us Now

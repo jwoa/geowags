@@ -66,7 +66,7 @@ export const Header = () => {
         <div className="container">
           <div className="flex items-center justify-between h-[var(--header-height)]">
             {/* Logo */}
-            <Logo variant={isScrolled ? "default" : "default"} size="md" />
+            <Logo variant={isScrolled ? "default" : "white"} size="md" />
 
             {/* Desktop Navigation */}
             <nav

@@ -123,7 +123,7 @@ export const AboutPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute -bottom-8 right-0 md:right-8 bg-white shadow-xl p-8 max-w-xs"
+              className="absolute bottom-4 right-4 md:bottom-auto md:-bottom-8 md:right-8 bg-white shadow-xl p-6 md:p-8 max-w-xs"
             >
               <div className="grid grid-cols-2 gap-6">
                 <div>

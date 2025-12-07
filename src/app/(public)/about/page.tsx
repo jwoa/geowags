@@ -50,7 +50,7 @@ export default function AboutPage() {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Hero Section */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      <section className="relative section overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           <div className="absolute inset-0 opacity-20">
@@ -138,7 +138,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="section bg-gray-50">
         <div className="container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -254,7 +254,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[var(--geowags-red)]">
+      <section className="section bg-[var(--geowags-red)]">
         <div className="container text-center">
           <h2 className="heading-1 text-white mb-6">Ready to Start Your Project?</h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">

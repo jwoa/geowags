@@ -98,7 +98,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
               <motion.div key={category.slug} variants={itemVariants}>
                 <Link
                   href={`/products?category=${category.slug}`}
-                  className="group relative block aspect-[3/4] overflow-hidden"
+                  className="group relative block aspect-[4/5] md:aspect-[3/4] overflow-hidden"
                 >
                   {/* Background */}
                   <div className={`absolute inset-0 bg-gradient-to-b ${gradient}`}>

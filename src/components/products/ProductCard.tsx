@@ -17,11 +17,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="group"
+      className="group bg-white border border-gray-200 hover:border-[var(--geowags-red)] transition-colors shadow-sm hover:shadow-lg"
     >
       <Link href={`/products/${product.slug}`} className="block">
         {/* Image Container */}
-        <div className="relative aspect-square bg-gray-100 overflow-hidden mb-4">
+        <div className="relative aspect-[3/4] bg-gray-100 overflow-hidden">
           {/* Product Image */}
           <Image
             src={product.images[0]?.url || "/images/placeholder.jpg"}
@@ -44,7 +44,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         {/* Content */}
-        <div>
+        <div className="px-10 pt-8 pb-10 space-y-4">
           <span className="text-xs uppercase tracking-wider text-gray-500 mb-1 block">
             {product.category.name}
           </span>

@@ -50,29 +50,23 @@ export default function AboutPage() {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Hero Section */}
-      <section className="relative section overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--geowags-red)] rounded-full blur-[150px]" />
-          </div>
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
+      <section className="relative section overflow-hidden border-b border-gray-200 bg-white">
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 45h90M45 0v90' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+          }}
+        />
 
         <div className="container relative">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl space-y-4">
             <span className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium">
               About Us
             </span>
-            <h1 className="heading-display text-white mb-6">
+            <h1 className="heading-display text-gray-900 mb-6">
               Building Beautiful Spaces Together
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed">
               For over a decade, Geowags has been Ghana&apos;s trusted partner in
               transforming houses into homes. We bring world-class products and
               expert guidance to every project.
@@ -84,24 +78,22 @@ export default function AboutPage() {
       {/* Story Section */}
       <section id="story" className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-16 items-center">
             {/* Image */}
             <div className="relative">
-              <div className="relative aspect-[4/5] bg-gray-100">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
-                    }}
-                  />
-                </div>
+              <div className="relative aspect-[3/4] bg-gray-50 border border-gray-200 shadow-sm">
+                <div
+                  className="absolute inset-0 opacity-[0.08]"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+                  }}
+                />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[var(--geowags-red)]" />
+              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[var(--geowags-red)] opacity-80" />
             </div>
 
             {/* Content */}
-            <div>
+            <div className="space-y-4">
               <span className="caption text-[var(--geowags-red)] mb-4 block">Our Story</span>
               <h2 className="heading-1 text-gray-900 mb-6">
                 A Legacy of Quality & Service
@@ -142,7 +134,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div key={stat.label} className="text-center bg-white border border-gray-200 p-6 shadow-sm">
                 <span className="block text-4xl lg:text-5xl font-display font-bold text-[var(--geowags-red)] mb-2">
                   {stat.value}
                 </span>
@@ -157,7 +149,7 @@ export default function AboutPage() {
       <section className="section bg-white">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            <div className="p-8 lg:p-12 bg-gray-50">
+            <div className="p-8 lg:p-12 bg-gray-50 border border-gray-200 shadow-sm">
               <div className="w-14 h-14 flex items-center justify-center bg-[var(--geowags-red)] text-white mb-6">
                 <Target className="w-7 h-7" />
               </div>
@@ -170,12 +162,12 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-8 lg:p-12 bg-gray-900 text-white">
+            <div className="p-8 lg:p-12 bg-white border border-gray-200 shadow-sm">
               <div className="w-14 h-14 flex items-center justify-center bg-[var(--geowags-red)] text-white mb-6">
                 <Eye className="w-7 h-7" />
               </div>
-              <h3 className="heading-2 mb-4">Our Vision</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="heading-2 text-gray-900 mb-4">Our Vision</h3>
+              <p className="text-gray-600 leading-relaxed">
                 To transform the home improvement industry in Ghana by setting new
                 standards for product quality, customer experience, and design
                 innovation. We envision a future where every Ghanaian home reflects
@@ -201,7 +193,7 @@ export default function AboutPage() {
             {values.map((value) => {
               const IconComponent = value.icon;
               return (
-                <div key={value.title} className="bg-white p-8">
+                <div key={value.title} className="bg-white p-8 border border-gray-200 shadow-sm h-full">
                   <div className="w-14 h-14 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)] mb-6">
                     <IconComponent className="w-7 h-7" />
                   </div>
@@ -239,7 +231,7 @@ export default function AboutPage() {
                     {milestone.year}
                   </span>
                   <h4 className="heading-4 text-gray-900 mb-2">{milestone.title}</h4>
-                  <p className="text-gray-600 text-sm">{milestone.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{milestone.description}</p>
                 </div>
 
                 {/* Dot */}

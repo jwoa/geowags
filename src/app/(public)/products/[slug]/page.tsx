@@ -66,11 +66,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const specifications = product.specifications || {};
   const primaryImage = product.images.find((img) => img.primary) || product.images[0];
+  const specEntries = Object.entries(specifications);
 
   return (
     <div className="pt-[var(--header-height)]">
       {/* Breadcrumb */}
-      <nav className="bg-gray-50 py-4" aria-label="Breadcrumb">
+      <nav className="bg-gray-50 py-5" aria-label="Breadcrumb">
         <div className="container">
           <ol className="flex items-center gap-2 text-sm">
             <li>
@@ -104,11 +105,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Product Details */}
       <section className="section">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 xl:gap-20 items-start">
             {/* Gallery */}
-            <div className="space-y-4">
+            <div className="space-y-5">
               {/* Main Image */}
-              <div className="relative aspect-square bg-gray-100 overflow-hidden">
+              <div className="relative aspect-square bg-gray-100 overflow-hidden border border-gray-200 shadow-sm">
                 <Image
                   src={primaryImage?.url || "/images/placeholder.jpg"}
                   alt={primaryImage?.alt || product.name}
@@ -129,11 +130,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
               {/* Thumbnail Grid */}
               {product.images.length > 1 && (
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-3">
                   {product.images.map((image, index) => (
                     <button
                       key={index}
-                      className="relative aspect-square bg-gray-100 overflow-hidden border-2 border-transparent hover:border-[var(--geowags-red)] transition-colors"
+                      className="relative aspect-square bg-gray-100 overflow-hidden border border-gray-200 hover:border-[var(--geowags-red)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--geowags-red)]"
+                      aria-label={`View image ${index + 1} of ${product.images.length}`}
+                      tabIndex={0}
                     >
                       <Image
                         src={image.url}
@@ -149,12 +152,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Product Info */}
-            <div className="lg:py-4">
+            <div className="lg:py-2 space-y-8">
               {/* Category & Collection */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 text-sm text-gray-500">
                 <Link
                   href={`/products?category=${product.category}`}
-                  className="text-xs uppercase tracking-wider text-gray-500 hover:text-[var(--geowags-red)] transition-colors"
+                  className="text-xs uppercase tracking-wider hover:text-[var(--geowags-red)] transition-colors"
                 >
                   {category?.name || product.category}
                 </Link>
@@ -172,23 +175,28 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Title */}
-              <h1 className="heading-1 text-gray-900 mb-6">{product.name}</h1>
+              <h1 className="heading-1 text-gray-900">{product.name}</h1>
 
               {/* Description */}
-              <p className="text-gray-600 mb-8 leading-relaxed">{product.description}</p>
+              <p className="text-gray-600 leading-relaxed">{product.description}</p>
 
               {/* Variants */}
-              <div className="space-y-6 mb-8">
+              <div className="space-y-6">
                 {/* Colors */}
                 {product.colors.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-medium text-gray-900 mb-3">Color</h4>
-                    <div className="flex gap-3">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-sm font-medium text-gray-900">Color</h4>
+                      <span className="text-xs uppercase tracking-wider text-gray-500">Pick an option</span>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
                       {product.colors.map((color) => (
                         <button
                           key={color.name}
-                          className="group flex flex-col items-center gap-2"
+                          className="group flex flex-col items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--geowags-red)]"
                           title={color.name}
+                          aria-label={color.name}
+                          aria-pressed={color === product.colors[0]}
                         >
                           <span
                             className="w-10 h-10 rounded-full border-2 border-gray-200 group-hover:border-[var(--geowags-red)] transition-colors"
@@ -204,16 +212,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {/* Sizes */}
                 {product.sizes.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-medium text-gray-900 mb-3">Size</h4>
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-sm font-medium text-gray-900">Size</h4>
+                      <span className="text-xs uppercase tracking-wider text-gray-500">Dimensions</span>
+                    </div>
                     <div className="flex flex-wrap gap-3">
                       {product.sizes.map((size, index) => (
                         <button
                           key={size.name}
-                          className={`px-4 py-2 border text-sm font-medium transition-all ${
+                          className={`px-4 py-2 border text-sm font-medium transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--geowags-red)] ${
                             index === 0
                               ? "border-[var(--geowags-red)] text-[var(--geowags-red)] bg-red-50"
                               : "border-gray-200 text-gray-700 hover:border-[var(--geowags-red)]"
                           }`}
+                          aria-pressed={index === 0}
+                          aria-label={`Size ${size.name}`}
                         >
                           {size.name}
                         </button>
@@ -225,16 +238,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {/* Finishes */}
                 {product.finishes.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-medium text-gray-900 mb-3">Finish</h4>
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-sm font-medium text-gray-900">Finish</h4>
+                      <span className="text-xs uppercase tracking-wider text-gray-500">Surface</span>
+                    </div>
                     <div className="flex flex-wrap gap-3">
                       {product.finishes.map((finish, index) => (
                         <button
                           key={finish}
-                          className={`px-4 py-2 border text-sm font-medium transition-all ${
+                          className={`px-4 py-2 border text-sm font-medium transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--geowags-red)] ${
                             index === 0
                               ? "border-[var(--geowags-red)] text-[var(--geowags-red)] bg-red-50"
                               : "border-gray-200 text-gray-700 hover:border-[var(--geowags-red)]"
                           }`}
+                          aria-pressed={index === 0}
+                          aria-label={`Finish ${finish}`}
                         >
                           {finish}
                         </button>
@@ -245,21 +263,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/contact" className="btn btn-primary btn-large flex-1">
                   <Phone className="w-5 h-5" />
                   Inquire Now
                 </Link>
-                <button className="btn btn-secondary btn-large">
+                <button className="btn btn-secondary btn-large sm:min-w-[140px]">
                   <Share2 className="w-5 h-5" />
                   Share
                 </button>
               </div>
 
               {/* Trust Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 border-t border-gray-200">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)]">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
+                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+                  <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Truck className="w-5 h-5" />
                   </div>
                   <div>
@@ -267,8 +285,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="text-xs text-gray-500">Within Accra</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)]">
+                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+                  <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Shield className="w-5 h-5" />
                   </div>
                   <div>
@@ -276,8 +294,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="text-xs text-gray-500">Premium products</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)]">
+                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+                  <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Check className="w-5 h-5" />
                   </div>
                   <div>
@@ -290,17 +308,32 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           {/* Specifications */}
-          <div className="mt-16 pt-12 border-t border-gray-200">
-            <h2 className="heading-2 text-gray-900 mb-8">Specifications</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(specifications).map(([key, value]) => (
-                <div key={key} className="flex justify-between py-3 border-b border-gray-100">
-                  <span className="text-gray-500 capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</span>
-                  <span className="text-gray-900 font-medium">{String(value)}</span>
-                </div>
-              ))}
+          {specEntries.length > 0 && (
+            <div className="mt-16 pt-12 border-t border-gray-200">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                <h2 className="heading-2 text-gray-900">Specifications</h2>
+                <p className="text-sm text-gray-500">
+                  Material details and care to help you plan your project.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {specEntries.map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="flex items-start justify-between gap-4 p-4 border border-gray-200 bg-white"
+                  >
+                    <span className="text-xs uppercase tracking-wide text-gray-500">
+                      {key.replace(/([A-Z])/g, " $1").trim()}
+                    </span>
+                    <span className="text-gray-900 font-medium text-right">
+                      {String(value)}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

@@ -118,7 +118,7 @@ export default function ContactPage() {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Hero Section */}
-      <section className="relative section bg-gray-50">
+      <section className="relative section bg-gray-50 border-b border-gray-200">
         <div className="container">
           <div className="max-w-2xl">
             <span className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium">
@@ -139,12 +139,12 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="section bg-white border-b border-gray-200">
         <div className="container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {contactInfo.map((info) => {
               const IconComponent = info.icon;
               return (
-                <div key={info.title} className="p-6 bg-gray-50">
-                  <div className="w-12 h-12 flex items-center justify-center bg-white text-[var(--geowags-red)] mb-4">
+                <div key={info.title} className="p-6 bg-gray-50 border border-gray-200 shadow-sm">
+                  <div className="w-12 h-12 flex items-center justify-center bg-white text-[var(--geowags-red)] mb-4 border border-gray-200">
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <h3 className="heading-4 text-gray-900 mb-2">{info.title}</h3>
@@ -174,9 +174,9 @@ export default function ContactPage() {
       {/* Main Content */}
       <section className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-16 items-start">
             {/* Contact Form */}
-            <div>
+            <div className="space-y-2">
               <h2 className="heading-2 text-gray-900 mb-2">Send Us a Message</h2>
               <p className="text-gray-600 mb-8">
                 Fill out the form below and we&apos;ll get back to you as soon as possible.
@@ -203,7 +203,7 @@ export default function ContactPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     onSubmit={handleSubmit}
-                    className="space-y-6"
+                    className="space-y-6 bg-gray-50 border border-gray-200 p-6 md:p-8 shadow-sm"
                   >
                     {/* Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -339,7 +339,7 @@ export default function ContactPage() {
             </div>
 
             {/* Map & Additional Info */}
-            <div>
+            <div className="space-y-4">
               <h2 className="heading-2 text-gray-900 mb-2">Visit Our Showroom</h2>
               <p className="text-gray-600 mb-8">
                 Experience our products in person at our Accra showroom. Our team
@@ -368,7 +368,7 @@ export default function ContactPage() {
               </div>
 
               {/* Additional Services */}
-              <div className="bg-gray-50 p-6">
+              <div className="bg-gray-50 p-6 border border-gray-200 shadow-sm">
                 <h3 className="heading-4 text-gray-900 mb-4">Our Services</h3>
                 <ul className="space-y-3">
                   {[

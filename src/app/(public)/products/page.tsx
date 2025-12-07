@@ -71,30 +71,36 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   return (
     <div className="pt-[var(--header-height)]">
       {/* Page Header */}
-      <section className="bg-gray-50 py-12 lg:py-16">
+      <section className="bg-gray-50 py-14 lg:py-18 border-b border-gray-200">
         <div className="container">
-          <h1 className="heading-1 text-gray-900 mb-4">Our Products</h1>
-          <p className="body-large text-gray-600 max-w-2xl">
-            Explore our extensive collection of premium tiles, bathroom fixtures,
-            and housewares. Quality products for every home improvement project.
-          </p>
+          <div className="max-w-3xl space-y-3">
+            <h1 className="heading-1 text-gray-900">Our Products</h1>
+            <p className="body-large text-gray-600">
+              Explore our extensive collection of premium tiles, bathroom fixtures,
+              and housewares. Quality products for every home improvement project.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="section">
+      <section className="section bg-white">
         <div className="container">
-          <div className="lg:grid lg:grid-cols-[280px_1fr] lg:gap-12">
+          <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12 xl:gap-16 items-start">
             {/* Sidebar Filters */}
             <Suspense fallback={<div className="hidden lg:block w-[280px]" />}>
-              <ProductFilters className="sticky top-[calc(var(--header-height)+2rem)] h-fit" />
+              <div className="hidden lg:block sticky top-[calc(var(--header-height)+2rem)]">
+                <div className="border border-gray-200 bg-white shadow-sm p-6 space-y-6">
+                  <ProductFilters />
+                </div>
+              </div>
             </Suspense>
 
             {/* Main Content */}
             <div>
               {/* Toolbar */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
-                <p className="text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 pb-6 border-b border-gray-200">
+                <p className="text-gray-600 leading-relaxed">
                   Showing <span className="font-medium text-gray-900">{productCardData.length}</span> products
                 </p>
                 <Suspense fallback={null}>
@@ -107,7 +113,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
               {/* Pagination would go here */}
               {productCardData.length > 12 && (
-                <div className="mt-12 flex justify-center">
+                <div className="mt-14 flex justify-center">
                   <nav className="flex gap-2" aria-label="Pagination">
                     <button className="btn btn-secondary btn-small" disabled>
                       Previous

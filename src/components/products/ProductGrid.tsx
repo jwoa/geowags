@@ -12,7 +12,7 @@ type ProductGridProps = {
 export const ProductGrid = ({ products, loading = false }: ProductGridProps) => {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="animate-pulse">
             <div className="aspect-square bg-gray-200 mb-4" />
@@ -38,7 +38,7 @@ export const ProductGrid = ({ products, loading = false }: ProductGridProps) => 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7"
     >
       {products.map((product, index) => (
         <ProductCard key={product.id} product={product} priority={index < 4} />

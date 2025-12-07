@@ -1,0 +1,340 @@
+---
+alwaysApply: true
+---
+
+# Luxury E-commerce Design Guide
+
+## Core Design Philosophy
+Clean, spacious, and sophisticated interface with strategic red accents on a pure white canvas. Every element should breathe, creating a premium shopping experience that emphasizes quality and attention to detail.
+
+---
+
+## Color Palette
+
+### Primary Colors
+- **Pure White**: `#FFFFFF` - Main background, creates luxury through negative space
+- **Off-White**: `#FAFAFA` - Subtle section backgrounds for depth without distraction
+
+### Accent Colors
+- **Crimson Red**: `#DC2626` - Primary CTAs, important actions, brand moments
+- **Deep Red**: `#991B1B` - Hover states, pressed states, emphasis
+- **Rose Red**: `#FCA5A5` - Subtle highlights, light touches
+
+### Neutral Colors
+- **Charcoal**: `#1F1F1F` - Primary text, headings
+- **Slate Gray**: `#64748B` - Secondary text, descriptions
+- **Light Gray**: `#E5E7EB` - Borders, dividers, subtle separators
+- **Silver**: `#F3F4F6` - Card backgrounds, input fields
+
+---
+
+## Typography
+
+### Font Families
+```css
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+```
+
+### Type Scale
+- **Hero/Display**: 56px-72px, font-weight: 300 (light), letter-spacing: -0.02em
+- **H1**: 48px, font-weight: 400, letter-spacing: -0.01em
+- **H2**: 36px, font-weight: 400, letter-spacing: -0.01em
+- **H3**: 28px, font-weight: 500, letter-spacing: 0
+- **H4**: 20px, font-weight: 600, letter-spacing: 0
+- **Body Large**: 18px, font-weight: 400, line-height: 1.7
+- **Body**: 16px, font-weight: 400, line-height: 1.6
+- **Body Small**: 14px, font-weight: 400, line-height: 1.5
+- **Caption**: 12px, font-weight: 500, letter-spacing: 0.05em, uppercase
+
+### Typography Rules
+- Headings use lighter weights (300-400) for elegance
+- Body text maintains comfortable reading with generous line-height
+- Limited use of bold weights to preserve sophistication
+- Uppercase sparingly, only for labels and captions
+
+---
+
+## Spacing System
+
+### Base Unit: 4px
+Use multiples of 4px for all spacing to maintain consistent rhythm.
+
+### Spacing Scale
+- **XXS**: 4px - Icon to text, tight groupings
+- **XS**: 8px - Button padding (vertical), compact spacing
+- **SM**: 12px - Form field gaps, list item spacing
+- **MD**: 16px - Standard element spacing, card padding (small)
+- **LG**: 24px - Section spacing (small), component gaps
+- **XL**: 32px - Card padding, modal padding
+- **2XL**: 48px - Section spacing (medium), content blocks
+- **3XL**: 64px - Major section spacing, page margins
+- **4XL**: 96px - Hero spacing, dramatic section breaks
+- **5XL**: 128px - Maximum spacing, landing page sections
+
+### Spacing Guidelines
+- **Paragraph spacing**: 24px between paragraphs
+- **Section spacing**: Minimum 64px between major sections
+- **Card internal padding**: 32px-48px for breathing room
+- **Container max-width**: 1280px-1440px for optimal readability
+- **Side margins**: Minimum 24px mobile, 48px-96px desktop
+
+---
+
+## Component Specifications
+
+### Buttons
+
+#### Primary Button (Red)
+```css
+background: #DC2626
+color: #FFFFFF
+padding: 16px 32px
+border-radius: 2px
+font-size: 16px
+font-weight: 500
+letter-spacing: 0.02em
+transition: all 200ms ease
+hover: background #991B1B, transform: translateY(-1px)
+```
+
+#### Secondary Button (Outline)
+```css
+background: transparent
+border: 1px solid #1F1F1F
+color: #1F1F1F
+padding: 16px 32px
+border-radius: 2px
+hover: background #1F1F1F, color #FFFFFF
+```
+
+#### Ghost Button
+```css
+background: transparent
+color: #64748B
+padding: 16px 24px
+hover: color #DC2626
+```
+
+### Cards
+```css
+background: #FFFFFF
+border: 1px solid #E5E7EB
+border-radius: 4px
+padding: 32px
+box-shadow: 0 1px 3px rgba(0,0,0,0.04)
+hover: box-shadow: 0 4px 12px rgba(0,0,0,0.08)
+transition: all 300ms ease
+```
+
+### Input Fields
+```css
+background: #FFFFFF
+border: 1px solid #E5E7EB
+border-radius: 2px
+padding: 14px 16px
+font-size: 16px
+focus: border-color #DC2626, outline 2px #FCA5A5
+```
+
+### Product Cards
+```css
+aspect-ratio: 3:4 (product image)
+padding: 0 (for full-bleed image)
+text-content-padding: 20px
+hover: subtle scale (1.02) on image only
+```
+
+---
+
+## Layout Principles
+
+### Grid System
+- **Desktop**: 12-column grid, 24px-32px gutters
+- **Tablet**: 8-column grid, 20px gutters
+- **Mobile**: 4-column grid, 16px gutters
+
+### Whitespace Strategy
+1. **Generous margins**: Let content breathe with 96px+ vertical spacing between sections
+2. **Asymmetric balance**: Use whitespace boldly on one side for visual interest
+3. **Content max-width**: Never let text lines exceed 65-75 characters
+4. **Hero sections**: Embrace negative space, minimal text, maximum impact
+
+### Navigation
+- Fixed header: 80px height, background blur effect on scroll
+- Logo left, navigation center, actions right
+- Minimal items (5-7 max), hide secondary navigation until needed
+- Mobile: Fullscreen drawer menu with large touch targets (60px+)
+
+---
+
+## Interactive States
+
+### Hover States
+- Subtle elevation: `box-shadow: 0 4px 12px rgba(0,0,0,0.08)`
+- Color transitions: 200ms ease
+- Slight vertical lift: `transform: translateY(-2px)`
+
+### Active/Pressed
+- Scale down slightly: `transform: scale(0.98)`
+- Darken by one shade
+
+### Focus
+- Red outline: `outline: 2px solid #DC2626`
+- Offset: `outline-offset: 2px`
+
+### Loading
+- Elegant skeleton screens in light gray
+- Subtle pulse animation (1.5s duration)
+- No spinners, use progress indicators for clarity
+
+---
+
+## Imagery Guidelines
+
+### Product Photography
+- Pure white backgrounds
+- High resolution (2x retina minimum)
+- Consistent lighting, soft shadows
+- Multiple angles, zoom capability
+- Lifestyle shots as secondary images
+
+### Aspect Ratios
+- Product cards: 3:4 (portrait)
+- Hero images: 16:9 or 21:9 (cinematic)
+- Thumbnails: 1:1 (square)
+
+---
+
+## Iconography
+
+### Style
+- Outlined icons (not filled)
+- 1.5px-2px stroke weight
+- 24px default size
+- Red accents for interactive icons
+- Consistent style library (Lucide, Heroicons, or Phosphor)
+
+---
+
+## Micro-interactions
+
+### Animations
+- Page transitions: 300ms ease-in-out
+- Hover effects: 200ms ease
+- Modal appearances: 250ms ease-out with slight scale
+- Scrolling: Smooth scroll behavior enabled
+
+### Feedback
+- Success: Brief green checkmark (appears and fades)
+- Error: Subtle red border pulse
+- Added to cart: Smooth fly-to-cart animation
+
+---
+
+## Responsive Breakpoints
+
+```css
+mobile: 0-640px
+tablet: 641px-1024px
+desktop: 1025px-1440px
+large: 1441px+
+```
+
+### Mobile-First Adjustments
+- Reduce spacing scale by 25% on mobile
+- Stack cards vertically with 16px gaps
+- Full-width buttons for primary actions
+- Collapse navigation to hamburger menu
+- Touch targets minimum 44x44px
+
+---
+
+## Accessibility Standards
+
+- WCAG AA minimum contrast ratios (4.5:1 for body text)
+- Focus indicators always visible
+- Semantic HTML elements
+- Alt text for all images
+- Keyboard navigation fully supported
+- ARIA labels where appropriate
+
+---
+
+## Example Component Combinations
+
+### Product Listing Page
+```
+- Hero: 96px top padding, minimal text, red CTA
+- Filter sidebar: 320px width, white background, 32px padding
+- Product grid: 3-4 columns, 32px gaps, hover elevate cards
+- Each card: White, subtle border, 20px padding below image
+- Bottom margin: 128px before footer
+```
+
+### Checkout Flow
+```
+- Progress indicator: Red dots for current step
+- Form sections: 48px spacing between each
+- Input groups: 16px gaps within, 32px between groups
+- Summary sidebar: Sticky position, light gray background, 32px padding
+- CTA: Large red button, full width mobile, right-aligned desktop
+```
+
+---
+
+## Implementation Notes for Claude Sonnet 4.5
+
+When building with this guide:
+
+1. **Always specify exact pixel values** from the spacing scale
+2. **Use Tailwind utility classes** when possible for consistency
+3. **Implement hover states** on all interactive elements
+4. **Add transitions** to color and transform changes
+5. **Test contrast ratios** between red accents and backgrounds
+6. **Use CSS Grid** for complex layouts, Flexbox for simpler ones
+7. **Include focus-visible** states for accessibility
+8. **Add loading states** for async actions
+9. **Implement responsive classes** at each breakpoint
+10. **Comment your code** when deviating from the guide
+
+### Code Example Template
+```jsx
+// Product Card Component
+<div className="group bg-white border border-gray-200 rounded overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+  <div className="aspect-[3/4] overflow-hidden">
+    <img className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102" />
+  </div>
+  <div className="p-5 space-y-2">
+    <h3 className="text-lg font-medium text-gray-900">Product Name</h3>
+    <p className="text-sm text-gray-600">Brief description</p>
+    <p className="text-xl font-medium text-gray-900">$299</p>
+    <button className="w-full mt-4 bg-red-600 text-white px-8 py-4 rounded-sm hover:bg-red-700 transition-colors duration-200">
+      Add to Cart
+    </button>
+  </div>
+</div>
+```
+
+---
+
+## Design Don'ts
+
+❌ **Avoid:**
+- Cluttered layouts with insufficient spacing
+- Multiple competing CTAs in the same section
+- Heavy shadows or gradients (keep it flat and clean)
+- Too many colors (stick to white + red + grays)
+- Complex animations that distract from content
+- Small touch targets on mobile
+- Long paragraphs without breaks
+- Underlined text except for links
+
+✓ **Instead:**
+- Embrace whitespace generously
+- One primary CTA per section
+- Subtle elevation through minimal shadows
+- Disciplined color palette
+- Purposeful micro-interactions
+- Minimum 44px touch targets
+- Short paragraphs, scannable content
+- Clear link styling with color/weight changes

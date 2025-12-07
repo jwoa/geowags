@@ -54,30 +54,32 @@ export default async function StaticPage({ params }: StaticPageProps) {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Page Header */}
-      <section className="bg-gray-50 py-12 lg:py-16 border-b border-gray-200">
+      <section className="bg-gray-50 py-14 lg:py-18 border-b border-gray-200">
         <div className="container">
-          <h1 className="heading-1 text-gray-900 mb-4">{page.title}</h1>
-          {page.description && (
-            <p className="body-large text-gray-600 max-w-3xl">
-              {page.description}
-            </p>
-          )}
-          {page.lastUpdated && (
-            <p className="text-sm text-gray-500 mt-4">
-              Last updated: {new Date(page.lastUpdated).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-          )}
+          <div className="max-w-4xl space-y-3">
+            <h1 className="heading-1 text-gray-900">{page.title}</h1>
+            {page.description && (
+              <p className="body-large text-gray-600 max-w-3xl">
+                {page.description}
+              </p>
+            )}
+            {page.lastUpdated && (
+              <p className="text-sm text-gray-500">
+                Last updated: {new Date(page.lastUpdated).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
       {/* Page Content */}
       <section className="section bg-white">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto bg-gray-50 border border-gray-200 p-8 md:p-10 shadow-sm">
             <article
               className="prose prose-lg prose-gray max-w-none
                 prose-headings:font-display prose-headings:font-medium

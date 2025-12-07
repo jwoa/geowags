@@ -13,13 +13,6 @@ const categoryIcons: Record<string, React.ElementType> = {
   Home: Home,
 };
 
-const categoryGradients: Record<string, string> = {
-  tiles: "from-amber-900/80 to-amber-950/90",
-  "bathroom-fixtures": "from-sky-900/80 to-sky-950/90",
-  "kitchen-dining": "from-emerald-900/80 to-emerald-950/90",
-  "home-decor": "from-rose-900/80 to-rose-950/90",
-};
-
 type CategoryShowcaseProps = {
   categories: Category[];
 };
@@ -88,59 +81,52 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {categories.map((category) => {
             const IconComponent = categoryIcons[category.icon];
-            const gradient = categoryGradients[category.slug] || "from-gray-900/80 to-gray-950/90";
 
             return (
               <motion.div key={category.slug} variants={itemVariants}>
                 <Link
                   href={`/products?category=${category.slug}`}
-                  className="group relative block aspect-[4/5] md:aspect-[3/4] overflow-hidden"
+                  className="group relative block aspect-[3/4] overflow-hidden bg-white border border-gray-200 hover:border-[var(--geowags-red)] transition-colors shadow-sm hover:shadow-lg"
                 >
-                  {/* Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-b ${gradient}`}>
-                    {/* Decorative pattern */}
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
-                      }}
-                    />
-                  </div>
+                  <div
+                    className="absolute inset-0 opacity-[0.06]"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40h80M40 0v80' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+                    }}
+                  />
 
                   {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                    {/* Icon */}
-                    <div className="mb-auto pt-4">
+                  <div className="absolute inset-0 flex flex-col justify-between p-6 text-gray-900">
+                    <div className="flex items-center justify-between">
                       {IconComponent && (
-                        <div className="w-14 h-14 flex items-center justify-center bg-white/10 backdrop-blur-sm group-hover:bg-[var(--geowags-red)] transition-colors duration-300">
+                        <div className="w-14 h-14 flex items-center justify-center bg-white border border-gray-200 text-[var(--geowags-red)] shadow-sm">
                           <IconComponent className="w-7 h-7" />
                         </div>
                       )}
+                      <span className="text-xs uppercase tracking-widest text-gray-500">
+                        {category.slug.replace("-", " ")}
+                      </span>
                     </div>
 
-                    {/* Text */}
-                    <div>
-                      <h3 className="heading-3 mb-2 group-hover:text-[var(--geowags-red-light)] transition-colors">
+                    <div className="mt-auto">
+                      <h3 className="heading-3 mb-2 group-hover:text-[var(--geowags-red)] transition-colors">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-white/70 mb-4 line-clamp-2">
+                      <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                         {category.description}
                       </p>
 
                       {/* CTA */}
-                      <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider group-hover:gap-4 transition-all">
+                      <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-[var(--geowags-red)] group-hover:gap-4 transition-all">
                         Explore
                         <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[var(--geowags-red)]/0 group-hover:bg-[var(--geowags-red)]/10 transition-colors duration-300" />
                 </Link>
               </motion.div>
             );

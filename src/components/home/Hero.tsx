@@ -71,32 +71,24 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] md:min-h-[700px] overflow-hidden">
+    <section className="relative h-screen min-h-[640px] md:min-h-[720px] overflow-hidden bg-white">
       {/* Background Slides */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          {/* Placeholder gradient background - replace with actual images */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-            {/* Decorative elements */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--geowags-red)] rounded-full blur-[150px]" />
-              <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[var(--geowags-teal)] rounded-full blur-[150px]" />
-            </div>
-            {/* Pattern overlay */}
-            <div
-              className="absolute inset-0 opacity-[0.03]"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            />
-          </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.08),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(249,115,22,0.05),transparent_38%)]" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40h80M40 0v80' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+            }}
+          />
         </motion.div>
       </AnimatePresence>
 
@@ -106,17 +98,17 @@ export const Hero = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
             >
               {/* Subtitle */}
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium"
+            className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium"
               >
                 {heroSlides[currentSlide].subtitle}
               </motion.span>
@@ -126,7 +118,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="heading-display text-white mb-6"
+                className="heading-display text-gray-900 mb-6"
               >
                 {heroSlides[currentSlide].title}
               </motion.h1>
@@ -136,7 +128,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed"
               >
                 {heroSlides[currentSlide].description}
               </motion.p>
@@ -146,18 +138,18 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4"
               >
                 <Link
                   href={heroSlides[currentSlide].cta.href}
-                  className="btn btn-primary btn-large group"
+                className="btn btn-primary btn-large group"
                 >
                   {heroSlides[currentSlide].cta.label}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="btn btn-outline btn-large border-white text-white hover:bg-white hover:text-gray-900"
+                className="btn btn-outline btn-large"
                 >
                   Contact Us
                 </Link>
@@ -174,7 +166,7 @@ export const Hero = () => {
             key={slide.id}
             onClick={() => handleSlideChange(index)}
             className={`w-12 h-1 transition-all duration-300 ${
-              index === currentSlide ? "bg-[var(--geowags-red)]" : "bg-white/30 hover:bg-white/50"
+              index === currentSlide ? "bg-[var(--geowags-red)]" : "bg-gray-200 hover:bg-gray-300"
             }`}
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === currentSlide ? "true" : "false"}
@@ -185,7 +177,7 @@ export const Hero = () => {
       {/* Scroll Down Indicator */}
       <button
         onClick={handleScrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
         aria-label="Scroll to next section"
       >
         <span className="text-xs uppercase tracking-widest">Scroll</span>

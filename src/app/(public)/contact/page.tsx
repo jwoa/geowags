@@ -379,7 +379,7 @@ export default function ContactPage() {
                     "Bulk order discounts",
                   ].map((service) => (
                     <li key={service} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-[var(--geowags-teal)] flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-[var(--geowags-red)] flex-shrink-0 mt-0.5" />
                       <span className="text-gray-600">{service}</span>
                     </li>
                   ))}

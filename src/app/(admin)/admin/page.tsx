@@ -67,7 +67,7 @@ const quickActions = [
     description: "Check contact submissions",
     href: "/admin/inquiries",
     icon: Mail,
-    color: "bg-[var(--geowags-teal)]",
+    color: "bg-[var(--geowags-red)]",
   },
   {
     label: "Site Settings",

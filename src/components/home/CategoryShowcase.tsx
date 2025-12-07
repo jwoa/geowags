@@ -4,20 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Grid3X3, Bath, ChefHat, Home } from "lucide-react";
 import { motion } from "framer-motion";
-import { PRODUCT_CATEGORIES } from "@/lib/constants";
+import type { Category } from "@/lib/content";
 
 const categoryIcons: Record<string, React.ElementType> = {
   Grid3X3: Grid3X3,
   Bath: Bath,
   ChefHat: ChefHat,
   Home: Home,
-};
-
-const categoryImages: Record<string, string> = {
-  tiles: "/images/categories/tiles.jpg",
-  "bathroom-fixtures": "/images/categories/bathroom.jpg",
-  "kitchen-dining": "/images/categories/kitchen.jpg",
-  "home-decor": "/images/categories/decor.jpg",
 };
 
 const categoryGradients: Record<string, string> = {
@@ -27,7 +20,11 @@ const categoryGradients: Record<string, string> = {
   "home-decor": "from-rose-900/80 to-rose-950/90",
 };
 
-export const CategoryShowcase = () => {
+type CategoryShowcaseProps = {
+  categories: Category[];
+};
+
+export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -93,7 +90,7 @@ export const CategoryShowcase = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {PRODUCT_CATEGORIES.map((category) => {
+          {categories.map((category) => {
             const IconComponent = categoryIcons[category.icon];
             const gradient = categoryGradients[category.slug] || "from-gray-900/80 to-gray-950/90";
 

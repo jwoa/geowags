@@ -2,73 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { ProductCardData } from "@/lib/types";
 
-// Placeholder products for demo - will be replaced with real data
-const placeholderProducts: ProductCardData[] = [
-  {
-    id: "1",
-    name: "Carrara White Marble Tile",
-    slug: "carrara-white-marble-tile",
-    isFeatured: true,
-    isNew: true,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-1.jpg", alt: "Carrara White Marble Tile", isPrimary: true }],
-  },
-  {
-    id: "2",
-    name: "Modern Rainfall Shower Set",
-    slug: "modern-rainfall-shower-set",
-    isFeatured: true,
-    isNew: false,
-    category: { name: "Bathroom Fixtures", slug: "bathroom-fixtures" },
-    images: [{ url: "/images/products/shower-1.jpg", alt: "Modern Rainfall Shower Set", isPrimary: true }],
-  },
-  {
-    id: "3",
-    name: "Hexagon Cement Tiles",
-    slug: "hexagon-cement-tiles",
-    isFeatured: true,
-    isNew: true,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-2.jpg", alt: "Hexagon Cement Tiles", isPrimary: true }],
-  },
-  {
-    id: "4",
-    name: "Freestanding Bathtub Elite",
-    slug: "freestanding-bathtub-elite",
-    isFeatured: true,
-    isNew: false,
-    category: { name: "Bathroom Fixtures", slug: "bathroom-fixtures" },
-    images: [{ url: "/images/products/bathtub-1.jpg", alt: "Freestanding Bathtub Elite", isPrimary: true }],
-  },
-  {
-    id: "5",
-    name: "Porcelain Wood Plank",
-    slug: "porcelain-wood-plank",
-    isFeatured: true,
-    isNew: false,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-3.jpg", alt: "Porcelain Wood Plank", isPrimary: true }],
-  },
-  {
-    id: "6",
-    name: "Vessel Sink Basin",
-    slug: "vessel-sink-basin",
-    isFeatured: true,
-    isNew: true,
-    category: { name: "Bathroom Fixtures", slug: "bathroom-fixtures" },
-    images: [{ url: "/images/products/sink-1.jpg", alt: "Vessel Sink Basin", isPrimary: true }],
-  },
-];
-
 type FeaturedProductsProps = {
-  products?: ProductCardData[];
+  products: ProductCardData[];
 };
 
-export const FeaturedProducts = ({ products = placeholderProducts }: FeaturedProductsProps) => {
+export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -146,12 +88,14 @@ export const FeaturedProducts = ({ products = placeholderProducts }: FeaturedPro
               <Link href={`/products/${product.slug}`} className="group block">
                 {/* Image Container */}
                 <div className="relative aspect-square bg-gray-100 overflow-hidden mb-4">
-                  {/* Placeholder gradient - replace with actual image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300">
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                      <span className="text-sm">Product Image</span>
-                    </div>
-                  </div>
+                  {/* Product Image */}
+                  <Image
+                    src={product.images[0]?.url || "/images/placeholder.jpg"}
+                    alt={product.images[0]?.alt || product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
 
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
@@ -162,18 +106,6 @@ export const FeaturedProducts = ({ products = placeholderProducts }: FeaturedPro
                       <span className="badge badge-accent">Featured</span>
                     )}
                   </div>
-
-                  {/* Quick Action */}
-                  <button
-                    className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-[var(--geowags-red)] hover:text-white transition-all opacity-0 group-hover:opacity-100 z-10"
-                    aria-label="Add to wishlist"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // Handle wishlist
-                    }}
-                  >
-                    <Heart className="w-5 h-5" />
-                  </button>
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />

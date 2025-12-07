@@ -2,99 +2,17 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ChevronRight, Heart, Share2, Check, Truck, Shield, Phone } from "lucide-react";
+import { ChevronRight, Share2, Check, Truck, Shield, Phone } from "lucide-react";
 import { ProductGrid } from "@/components/products";
 import { SITE_CONFIG } from "@/lib/constants";
-import type { ProductCardData } from "@/lib/types";
-
-// Demo product data - will be replaced with database fetch
-const demoProducts = [
-  {
-    id: "1",
-    name: "Carrara White Marble Tile",
-    slug: "carrara-white-marble-tile",
-    description: "Elevate your space with the timeless elegance of Carrara White Marble Tiles. These premium tiles feature the classic white background with subtle grey veining that has made Carrara marble a favorite of architects and designers for centuries. Perfect for floors, walls, and countertops.",
-    specifications: JSON.stringify({
-      material: "Natural Marble",
-      finish: "Polished",
-      thickness: "10mm",
-      origin: "Italy",
-      usage: "Indoor/Outdoor",
-      waterAbsorption: "< 0.5%",
-    }),
-    isFeatured: true,
-    isNew: true,
-    category: { name: "Tiles", slug: "tiles" },
-    collection: { name: "Luxury Marble", slug: "luxury-marble" },
-    images: [
-      { url: "/images/products/tile-1.jpg", alt: "Carrara White Marble Tile - Main", isPrimary: true },
-      { url: "/images/products/tile-1-2.jpg", alt: "Carrara White Marble Tile - Detail", isPrimary: false },
-      { url: "/images/products/tile-1-3.jpg", alt: "Carrara White Marble Tile - Room", isPrimary: false },
-    ],
-    colors: [
-      { name: "White", hexCode: "#FFFFFF" },
-      { name: "Grey", hexCode: "#808080" },
-    ],
-    sizes: [
-      { name: "30x30 cm", dimensions: "300mm x 300mm x 10mm" },
-      { name: "60x60 cm", dimensions: "600mm x 600mm x 10mm" },
-      { name: "60x120 cm", dimensions: "600mm x 1200mm x 10mm" },
-    ],
-    finishes: [
-      { name: "Polished" },
-      { name: "Honed" },
-      { name: "Brushed" },
-    ],
-  },
-];
-
-// Related products demo
-const relatedProducts: ProductCardData[] = [
-  {
-    id: "3",
-    name: "Hexagon Cement Tiles",
-    slug: "hexagon-cement-tiles",
-    isFeatured: true,
-    isNew: true,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-2.jpg", alt: "Hexagon Cement Tiles", isPrimary: true }],
-  },
-  {
-    id: "5",
-    name: "Porcelain Wood Plank",
-    slug: "porcelain-wood-plank",
-    isFeatured: false,
-    isNew: false,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-3.jpg", alt: "Porcelain Wood Plank", isPrimary: true }],
-  },
-  {
-    id: "9",
-    name: "Terracotta Floor Tiles",
-    slug: "terracotta-floor-tiles",
-    isFeatured: false,
-    isNew: false,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-5.jpg", alt: "Terracotta Floor Tiles", isPrimary: true }],
-  },
-  {
-    id: "11",
-    name: "Slate Effect Porcelain",
-    slug: "slate-effect-porcelain",
-    isFeatured: false,
-    isNew: true,
-    category: { name: "Tiles", slug: "tiles" },
-    images: [{ url: "/images/products/tile-6.jpg", alt: "Slate Effect Porcelain", isPrimary: true }],
-  },
-];
-
+import { getProductBySlug, getProductsByCategory, getAllCategories } from "@/lib/content";
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = demoProducts.find((p) => p.slug === slug);
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -115,14 +33,39 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = demoProducts.find((p) => p.slug === slug);
+  const product = getProductBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  const specifications = JSON.parse(product.specifications || "{}");
-  const primaryImage = product.images.find((img) => img.isPrimary) || product.images[0];
+  const categories = getAllCategories();
+  const category = categories.find((c) => c.slug === product.category);
+  
+  // Get related products from same category
+  const relatedProductsFull = getProductsByCategory(product.category)
+    .filter((p) => p.slug !== product.slug)
+    .slice(0, 4);
+  
+  const relatedProducts = relatedProductsFull.map((p) => ({
+    id: p.slug,
+    name: p.name,
+    slug: p.slug,
+    isFeatured: p.featured,
+    isNew: p.new,
+    category: {
+      name: category?.name || p.category,
+      slug: p.category,
+    },
+    images: p.images.map((img) => ({
+      url: img.url,
+      alt: img.alt,
+      isPrimary: img.primary,
+    })),
+  }));
+
+  const specifications = product.specifications || {};
+  const primaryImage = product.images.find((img) => img.primary) || product.images[0];
 
   return (
     <div className="pt-[var(--header-height)]">
@@ -144,10 +87,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ChevronRight className="w-4 h-4 text-gray-400" />
             <li>
               <Link
-                href={`/products?category=${product.category.slug}`}
+                href={`/products?category=${product.category}`}
                 className="text-gray-500 hover:text-gray-700 transition-colors"
               >
-                {product.category.name}
+                {category?.name || product.category}
               </Link>
             </li>
             <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -166,18 +109,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="space-y-4">
               {/* Main Image */}
               <div className="relative aspect-square bg-gray-100 overflow-hidden">
-                {/* Placeholder - replace with actual image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span className="text-lg">Product Image</span>
-                  </div>
-                </div>
+                <Image
+                  src={primaryImage?.url || "/images/placeholder.jpg"}
+                  alt={primaryImage?.alt || product.name}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
 
                 {/* Badges */}
-                {(product.isNew || product.isFeatured) && (
+                {(product.new || product.featured) && (
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    {product.isNew && <span className="badge badge-primary">New</span>}
-                    {product.isFeatured && <span className="badge badge-accent">Featured</span>}
+                    {product.new && <span className="badge badge-primary">New</span>}
+                    {product.featured && <span className="badge badge-accent">Featured</span>}
                   </div>
                 )}
               </div>
@@ -190,7 +135,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       key={index}
                       className="relative aspect-square bg-gray-100 overflow-hidden border-2 border-transparent hover:border-[var(--geowags-red)] transition-colors"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-250" />
+                      <Image
+                        src={image.url}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                        sizes="100px"
+                      />
                     </button>
                   ))}
                 </div>
@@ -202,19 +153,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {/* Category & Collection */}
               <div className="flex items-center gap-3 mb-4">
                 <Link
-                  href={`/products?category=${product.category.slug}`}
+                  href={`/products?category=${product.category}`}
                   className="text-xs uppercase tracking-wider text-gray-500 hover:text-[var(--geowags-red)] transition-colors"
                 >
-                  {product.category.name}
+                  {category?.name || product.category}
                 </Link>
                 {product.collection && (
                   <>
                     <span className="text-gray-300">|</span>
                     <Link
-                      href={`/products?collection=${product.collection.slug}`}
+                      href={`/products?collection=${product.collection}`}
                       className="text-xs uppercase tracking-wider text-gray-500 hover:text-[var(--geowags-red)] transition-colors"
                     >
-                      {product.collection.name}
+                      {product.collection}
                     </Link>
                   </>
                 )}
@@ -241,7 +192,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         >
                           <span
                             className="w-10 h-10 rounded-full border-2 border-gray-200 group-hover:border-[var(--geowags-red)] transition-colors"
-                            style={{ backgroundColor: color.hexCode }}
+                            style={{ backgroundColor: color.hex }}
                           />
                           <span className="text-xs text-gray-600">{color.name}</span>
                         </button>
@@ -278,14 +229,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <div className="flex flex-wrap gap-3">
                       {product.finishes.map((finish, index) => (
                         <button
-                          key={finish.name}
+                          key={finish}
                           className={`px-4 py-2 border text-sm font-medium transition-all ${
                             index === 0
                               ? "border-[var(--geowags-red)] text-[var(--geowags-red)] bg-red-50"
                               : "border-gray-200 text-gray-700 hover:border-[var(--geowags-red)]"
                           }`}
                         >
-                          {finish.name}
+                          {finish}
                         </button>
                       ))}
                     </div>
@@ -299,10 +250,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <Phone className="w-5 h-5" />
                   Inquire Now
                 </Link>
-                <button className="btn btn-secondary btn-large">
-                  <Heart className="w-5 h-5" />
-                  Save
-                </button>
                 <button className="btn btn-secondary btn-large">
                   <Share2 className="w-5 h-5" />
                   Share

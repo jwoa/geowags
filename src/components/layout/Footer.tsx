@@ -9,34 +9,34 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="site-footer">
       {/* Main Footer */}
-      <div className="container py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+      <div className="container footer-main">
+        <div className="footer-grid">
           {/* Brand Column */}
-          <div className="lg:col-span-4">
+          <div className="footer-col footer-col--brand">
             <Logo variant="white" size="lg" />
-            <p className="mt-6 text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-subtle leading-relaxed max-w-sm stack-sm">
               {SITE_CONFIG.description}
             </p>
 
             {/* Contact Info */}
-            <div className="mt-8 space-y-4">
+            <div className="footer-contact">
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
-                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                className="footer-link"
               >
                 <Mail className="w-5 h-5 text-[var(--geowags-red)]" />
                 <span>{SITE_CONFIG.email}</span>
               </a>
               <a
                 href={`tel:${SITE_CONFIG.phone}`}
-                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                className="footer-link"
               >
                 <Phone className="w-5 h-5 text-[var(--geowags-red)]" />
                 <span>{SITE_CONFIG.phone}</span>
               </a>
-              <div className="flex items-center gap-3 text-gray-400">
+              <div className="flex-row text-subtle">
                 <MapPin className="w-5 h-5 text-[var(--geowags-red)]" />
                 <span>{SITE_CONFIG.address}</span>
               </div>
@@ -44,16 +44,16 @@ export const Footer = () => {
           </div>
 
           {/* Products Links */}
-          <div className="lg:col-span-2 lg:col-start-6">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+          <div className="footer-col footer-col--products">
+            <h4 className="footer-heading">
               Products
             </h4>
-            <ul className="space-y-3">
+            <ul className="footer-links">
               {FOOTER_LINKS.products.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="footer-link"
                   >
                     {link.label}
                   </Link>
@@ -63,16 +63,16 @@ export const Footer = () => {
           </div>
 
           {/* Company Links */}
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+          <div className="footer-col footer-col--company">
+            <h4 className="footer-heading">
               Company
             </h4>
-            <ul className="space-y-3">
+            <ul className="footer-links">
               {FOOTER_LINKS.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="footer-link"
                   >
                     {link.label}
                   </Link>
@@ -82,23 +82,23 @@ export const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="lg:col-span-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+          <div className="footer-col footer-col--newsletter">
+            <h4 className="footer-heading">
               Stay Updated
             </h4>
-            <p className="text-gray-400 mb-6">
+            <p className="text-subtle">
               Subscribe to receive updates on new products and collections.
             </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 text-white placeholder:text-gray-500 focus:border-[var(--geowags-red)] focus:outline-none transition-colors"
+                className="newsletter-input"
                 aria-label="Email address for newsletter"
               />
               <button
                 type="submit"
-                className="px-4 py-3 bg-[var(--geowags-red)] text-white hover:bg-[var(--geowags-red-dark)] transition-colors"
+                className="btn btn-primary btn-small"
                 aria-label="Subscribe to newsletter"
               >
                 <ArrowRight className="w-5 h-5" />
@@ -106,14 +106,14 @@ export const Footer = () => {
             </form>
 
             {/* Social Links */}
-            <div className="mt-8">
-              <p className="text-sm text-gray-500 mb-4">Follow us</p>
-              <div className="flex gap-4">
+            <div className="stack-sm">
+              <p className="text-subtle">Follow us</p>
+              <div className="social-links">
                 <a
                   href={SITE_CONFIG.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-[var(--geowags-red)] hover:text-white transition-all"
+                  className="social-link"
                   aria-label="Follow us on Facebook"
                 >
                   <Facebook className="w-5 h-5" />
@@ -122,7 +122,7 @@ export const Footer = () => {
                   href={SITE_CONFIG.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-[var(--geowags-red)] hover:text-white transition-all"
+                  className="social-link"
                   aria-label="Follow us on Instagram"
                 >
                   <Instagram className="w-5 h-5" />
@@ -131,7 +131,7 @@ export const Footer = () => {
                   href={SITE_CONFIG.social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-[var(--geowags-red)] hover:text-white transition-all"
+                  className="social-link"
                   aria-label="Follow us on Twitter"
                 >
                   <Twitter className="w-5 h-5" />
@@ -140,7 +140,7 @@ export const Footer = () => {
                   href={SITE_CONFIG.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-[var(--geowags-red)] hover:text-white transition-all"
+                  className="social-link"
                   aria-label="Follow us on LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -152,17 +152,17 @@ export const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-500">
+      <div className="footer-bottom">
+        <div className="container">
+          <div className="footer-bottom__content">
+            <p className="text-subtle">
               © {currentYear} {SITE_CONFIG.name}. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm text-gray-500">
-              <Link href="/privacy" className="hover:text-white transition-colors">
+            <div className="footer-legal">
+              <Link href="/privacy" className="footer-link">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
+              <Link href="/terms" className="footer-link">
                 Terms of Service
               </Link>
             </div>

@@ -41,7 +41,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
   };
 
   return (
-    <section id="categories" className="section bg-white">
+    <section id="categories" className="section">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -59,7 +59,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-1 text-gray-900 mb-4"
+            className="heading-1"
           >
             Explore Our Product Range
           </motion.h2>
@@ -68,7 +68,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="body-large text-gray-600"
+            className="body-large text-subtle"
           >
             From premium tiles to elegant bathroom fixtures, discover everything
             you need to transform your spaces.
@@ -81,7 +81,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="category-grid"
         >
           {categories.map((category) => {
             const IconComponent = categoryIcons[category.icon];
@@ -90,38 +90,38 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
               <motion.div key={category.slug} variants={itemVariants}>
                 <Link
                   href={`/products?category=${category.slug}`}
-                  className="group relative block aspect-[3/4] overflow-hidden bg-white border border-gray-200 hover:border-[var(--geowags-red)] transition-colors shadow-sm hover:shadow-lg"
+                  className="category-card"
                 >
                   <div
-                    className="absolute inset-0 opacity-[0.06]"
+                    className="category-card__overlay"
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40h80M40 0v80' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
                     }}
                   />
 
                   {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-between p-6 text-gray-900">
-                    <div className="flex items-center justify-between">
+                  <div className="category-card__content">
+                    <div className="category-card__top">
                       {IconComponent && (
-                        <div className="w-14 h-14 flex items-center justify-center bg-white border border-gray-200 text-[var(--geowags-red)] shadow-sm">
+                        <div className="category-card__icon">
                           <IconComponent className="w-7 h-7" />
                         </div>
                       )}
-                      <span className="text-xs uppercase tracking-widest text-gray-500">
+                      <span className="category-card__slug">
                         {category.slug.replace("-", " ")}
                       </span>
                     </div>
 
                     <div className="mt-auto">
-                      <h3 className="heading-3 mb-2 group-hover:text-[var(--geowags-red)] transition-colors">
+                      <h3 className="heading-3">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                      <p className="category-card__description line-clamp-2">
                         {category.description}
                       </p>
 
                       {/* CTA */}
-                      <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-[var(--geowags-red)] group-hover:gap-4 transition-all">
+                      <span className="category-card__cta">
                         Explore
                         <ArrowRight className="w-4 h-4" />
                       </span>
@@ -139,7 +139,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center stack-sm"
         >
           <Link href="/products" className="btn btn-outline btn-large group">
             View All Products

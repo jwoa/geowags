@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
+import "./custom.css";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],

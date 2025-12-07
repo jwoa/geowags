@@ -34,11 +34,11 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
   };
 
   return (
-    <section className="section bg-gray-50">
+    <section className="section section-muted">
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div>
+        <div className="flex-between stack-md" style={{ alignItems: "flex-end", gap: "1.5rem" }}>
+          <div className="stack-sm">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-1 text-gray-900"
+              className="heading-1"
             >
               Curated For You
             </motion.h2>
@@ -67,10 +67,11 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
           >
             <Link
               href="/products?featured=true"
-              className="inline-flex items-center gap-2 text-gray-700 hover:text-[var(--geowags-red)] font-medium transition-colors group"
+              className="flex-row text-subtle"
+              style={{ gap: "0.5rem" }}
             >
               View all featured products
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>
@@ -81,27 +82,27 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="product-grid product-grid--spacious"
         >
           {products.map((product) => (
             <motion.article key={product.id} variants={itemVariants}>
               <Link
                 href={`/products/${product.slug}`}
-                className="group block bg-white border border-gray-200 hover:border-[var(--geowags-red)] transition-colors shadow-sm hover:shadow-lg"
+                className="product-card"
               >
                 {/* Image Container */}
-                <div className="relative aspect-[3/4] bg-gray-100 overflow-hidden">
+                <div className="product-card__image">
                   {/* Product Image */}
                   <Image
                     src={product.images[0]?.url || "/images/placeholder.jpg"}
                     alt={product.images[0]?.alt || product.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="product-card__media"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
 
                   {/* Badges */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
+                  <div className="product-card__badges">
                     {product.isNew && (
                       <span className="badge badge-primary">New</span>
                     )}
@@ -111,15 +112,15 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
                   </div>
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                  <div className="product-card__overlay" />
                 </div>
 
                 {/* Content */}
-                <div className="px-5 pb-6 pt-4 space-y-2">
-                  <span className="text-xs uppercase tracking-wider text-gray-500 mb-1 block">
+                <div className="product-card__content" style={{ padding: "1.5rem" }}>
+                  <span className="product-card__category">
                     {product.category.name}
                   </span>
-                  <h3 className="heading-4 text-gray-900 group-hover:text-[var(--geowags-red)] transition-colors">
+                  <h3 className="heading-4 product-card__title">
                     {product.name}
                   </h3>
                 </div>

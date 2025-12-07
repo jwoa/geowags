@@ -12,12 +12,12 @@ type ProductGridProps = {
 export const ProductGrid = ({ products, loading = false }: ProductGridProps) => {
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+      <div className="product-grid product-grid--spacious">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="animate-pulse">
-            <div className="aspect-square bg-gray-200 mb-4" />
-            <div className="h-3 bg-gray-200 w-20 mb-2" />
-            <div className="h-5 bg-gray-200 w-3/4" />
+          <div key={i} className="stack-sm">
+            <div className="skeleton" style={{ aspectRatio: "1 / 1" }} />
+            <div className="skeleton-line" style={{ width: "5rem" }} />
+            <div className="skeleton-line" style={{ width: "75%", height: "1.25rem" }} />
           </div>
         ))}
       </div>
@@ -26,9 +26,9 @@ export const ProductGrid = ({ products, loading = false }: ProductGridProps) => 
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-16">
-        <p className="text-gray-500 text-lg mb-4">No products found</p>
-        <p className="text-gray-400">Try adjusting your filters or search criteria</p>
+      <div className="text-center stack-md" style={{ padding: "4rem 0" }}>
+        <p className="text-subtle text-lg">No products found</p>
+        <p className="text-muted">Try adjusting your filters or search criteria</p>
       </div>
     );
   }
@@ -38,7 +38,7 @@ export const ProductGrid = ({ products, loading = false }: ProductGridProps) => 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7"
+      className="product-grid product-grid--spacious"
     >
       {products.map((product, index) => (
         <ProductCard key={product.id} product={product} priority={index < 4} />

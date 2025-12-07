@@ -69,13 +69,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   }));
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-layout">
       {/* Page Header */}
-      <section className="bg-gray-50 py-14 lg:py-18 border-b border-gray-200">
+      <section className="page-header">
         <div className="container">
-          <div className="max-w-3xl space-y-3">
-            <h1 className="heading-1 text-gray-900">Our Products</h1>
-            <p className="body-large text-gray-600">
+          <div className="page-header__body">
+            <h1 className="heading-1">Our Products</h1>
+            <p className="body-large text-subtle">
               Explore our extensive collection of premium tiles, bathroom fixtures,
               and housewares. Quality products for every home improvement project.
             </p>
@@ -84,24 +84,20 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       </section>
 
       {/* Products Section */}
-      <section className="section bg-white">
+      <section className="page-content">
         <div className="container">
-          <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12 xl:gap-16 items-start">
+          <div className="products-layout">
             {/* Sidebar Filters */}
-            <Suspense fallback={<div className="hidden lg:block w-[280px]" />}>
-              <div className="hidden lg:block sticky top-[calc(var(--header-height)+2rem)]">
-                <div className="border border-gray-200 bg-white shadow-sm p-6 space-y-6">
-                  <ProductFilters />
-                </div>
-              </div>
+            <Suspense fallback={<div aria-hidden className="hide-mobile" style={{ width: "280px" }} />}>
+              <ProductFilters />
             </Suspense>
 
             {/* Main Content */}
             <div>
               {/* Toolbar */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 pb-6 border-b border-gray-200">
-                <p className="text-gray-600 leading-relaxed">
-                  Showing <span className="font-medium text-gray-900">{productCardData.length}</span> products
+              <div className="toolbar">
+                <p className="text-subtle">
+                  Showing <span className="text-primary">{productCardData.length}</span> products
                 </p>
                 <Suspense fallback={null}>
                   <ProductSort />
@@ -113,8 +109,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
               {/* Pagination would go here */}
               {productCardData.length > 12 && (
-                <div className="mt-14 flex justify-center">
-                  <nav className="flex gap-2" aria-label="Pagination">
+                <div className="flex-center" style={{ marginTop: "3.5rem" }}>
+                  <nav className="flex-row" style={{ gap: "0.5rem" }} aria-label="Pagination">
                     <button className="btn btn-secondary btn-small" disabled>
                       Previous
                     </button>

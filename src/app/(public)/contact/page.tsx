@@ -116,18 +116,18 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-layout">
       {/* Hero Section */}
-      <section className="relative section bg-gray-50 border-b border-gray-200">
+      <section className="page-header">
         <div className="container">
-          <div className="max-w-2xl">
-            <span className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium">
+          <div className="page-header__body" style={{ maxWidth: "40rem" }}>
+            <span className="hero__eyebrow">
               Contact Us
             </span>
-            <h1 className="heading-1 text-gray-900 mb-6">
+            <h1 className="heading-1">
               Let&apos;s Start a Conversation
             </h1>
-            <p className="body-large text-gray-600">
+            <p className="body-large text-subtle">
               Have questions about our products? Planning a project? Our team is
               ready to help. Reach out through any of the channels below or fill
               out the contact form.
@@ -137,19 +137,19 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="section bg-white border-b border-gray-200">
+      <section className="page-content">
         <div className="container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div className="grid-responsive grid-four">
             {contactInfo.map((info) => {
               const IconComponent = info.icon;
               return (
-                <div key={info.title} className="p-6 bg-gray-50 border border-gray-200 shadow-sm">
-                  <div className="w-12 h-12 flex items-center justify-center bg-white text-[var(--geowags-red)] mb-4 border border-gray-200">
+                <div key={info.title} className="surface stack-md">
+                  <div className="flex-center" style={{ width: "3rem", height: "3rem", background: "var(--white)", border: "1px solid var(--border)" }}>
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <h3 className="heading-4 text-gray-900 mb-2">{info.title}</h3>
+                  <h3 className="heading-4">{info.title}</h3>
                   {info.details.map((detail, index) => (
-                    <p key={index} className="text-gray-600 text-sm">
+                    <p key={index} className="text-subtle text-sm">
                       {detail}
                     </p>
                   ))}
@@ -158,7 +158,7 @@ export default function ContactPage() {
                       href={info.action.href}
                       target={info.action.href.startsWith("http") ? "_blank" : undefined}
                       rel={info.action.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center gap-1 text-sm text-[var(--geowags-red)] font-medium mt-3 hover:gap-2 transition-all"
+                      className="category-card__cta"
                     >
                       {info.action.label}
                       <ArrowRight className="w-4 h-4" />
@@ -172,15 +172,17 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content */}
-      <section className="section bg-white">
+      <section className="page-content">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-16 items-start">
+          <div className="about-grid">
             {/* Contact Form */}
-            <div className="space-y-2">
-              <h2 className="heading-2 text-gray-900 mb-2">Send Us a Message</h2>
-              <p className="text-gray-600 mb-8">
+            <div className="stack-lg">
+              <div className="stack-sm">
+                <h2 className="heading-2">Send Us a Message</h2>
+                <p className="text-subtle">
                 Fill out the form below and we&apos;ll get back to you as soon as possible.
-              </p>
+                </p>
+              </div>
 
               <AnimatePresence mode="wait">
                 {isSuccess ? (
@@ -188,13 +190,14 @@ export default function ContactPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="bg-green-50 border border-green-200 p-8 text-center"
+                    className="surface text-center"
+                    style={{ background: "#ecfdf3", borderColor: "#bbf7d0" }}
                   >
-                    <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-green-100 text-green-600 rounded-full">
+                    <div className="flex-center" style={{ width: "4rem", height: "4rem", margin: "0 auto 1rem", background: "#dcfce7", color: "#16a34a", borderRadius: "9999px" }}>
                       <CheckCircle className="w-8 h-8" />
                     </div>
-                    <h3 className="heading-4 text-green-800 mb-2">Message Sent!</h3>
-                    <p className="text-green-700">
+                    <h3 className="heading-4" style={{ color: "#166534" }}>Message Sent!</h3>
+                    <p className="text-subtle" style={{ color: "#15803d" }}>
                       Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                     </p>
                   </motion.div>
@@ -203,13 +206,13 @@ export default function ContactPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     onSubmit={handleSubmit}
-                    className="space-y-6 bg-gray-50 border border-gray-200 p-6 md:p-8 shadow-sm"
+                    className="surface stack-lg"
                   >
                     {/* Name & Email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid-two">
                       <div>
                         <label htmlFor="name" className="label">
-                          Name <span className="text-red-500">*</span>
+                          Name <span className="text-primary">*</span>
                         </label>
                         <input
                           type="text"
@@ -217,16 +220,16 @@ export default function ContactPage() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`input ${errors.name ? "border-red-500" : ""}`}
+                          className={`input ${errors.name ? "border-error" : ""}`}
                           placeholder="Your name"
                         />
                         {errors.name && (
-                          <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                          <p className="text-subtle text-sm" style={{ color: "var(--geowags-red)" }}>{errors.name}</p>
                         )}
                       </div>
                       <div>
                         <label htmlFor="email" className="label">
-                          Email <span className="text-red-500">*</span>
+                          Email <span className="text-primary">*</span>
                         </label>
                         <input
                           type="email"
@@ -234,17 +237,17 @@ export default function ContactPage() {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`input ${errors.email ? "border-red-500" : ""}`}
+                          className={`input ${errors.email ? "border-error" : ""}`}
                           placeholder="your@email.com"
                         />
                         {errors.email && (
-                          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                          <p className="text-subtle text-sm" style={{ color: "var(--geowags-red)" }}>{errors.email}</p>
                         )}
                       </div>
                     </div>
 
                     {/* Phone & Company */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid-two">
                       <div>
                         <label htmlFor="phone" className="label">
                           Phone
@@ -299,7 +302,7 @@ export default function ContactPage() {
                     {/* Message */}
                     <div>
                       <label htmlFor="message" className="label">
-                        Message <span className="text-red-500">*</span>
+                        Message <span className="text-primary">*</span>
                       </label>
                       <textarea
                         id="message"
@@ -307,11 +310,11 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={handleChange}
                         rows={6}
-                        className={`input textarea ${errors.message ? "border-red-500" : ""}`}
+                        className={`input textarea ${errors.message ? "border-error" : ""}`}
                         placeholder="Tell us about your project or inquiry..."
                       />
                       {errors.message && (
-                        <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                        <p className="text-subtle text-sm" style={{ color: "var(--geowags-red)" }}>{errors.message}</p>
                       )}
                     </div>
 
@@ -319,11 +322,11 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn btn-primary btn-large w-full sm:w-auto"
+                      className="btn btn-primary btn-large full-width"
                     >
                       {isSubmitting ? (
                         <>
-                          <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full spin" />
                           Sending...
                         </>
                       ) : (
@@ -339,25 +342,30 @@ export default function ContactPage() {
             </div>
 
             {/* Map & Additional Info */}
-            <div className="space-y-4">
-              <h2 className="heading-2 text-gray-900 mb-2">Visit Our Showroom</h2>
-              <p className="text-gray-600 mb-8">
+            <div className="stack-lg">
+              <div className="stack-sm">
+                <h2 className="heading-2">Visit Our Showroom</h2>
+                <p className="text-subtle">
                 Experience our products in person at our Accra showroom. Our team
                 is ready to assist you.
               </p>
+              </div>
 
               {/* Map Placeholder */}
-              <div className="relative aspect-[4/3] bg-gray-100 mb-8">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+              <div className="relative" style={{ aspectRatio: "4 / 3" }}>
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(135deg, #e5e7eb, #d1d5db)" }}
+                >
+                  <div className="absolute inset-0 flex-center text-subtle">
                     <div className="text-center">
-                      <MapPin className="w-12 h-12 mx-auto mb-2 text-[var(--geowags-red)]" />
-                      <p className="text-sm">Interactive map coming soon</p>
+                      <MapPin className="w-12 h-12 mx-auto mb-2 text-primary" />
+                      <p className="text-sm text-subtle">Interactive map coming soon</p>
                       <a
                         href="https://maps.google.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-[var(--geowags-red)] font-medium mt-2 hover:gap-2 transition-all"
+                        className="category-card__cta"
                       >
                         Open in Google Maps
                         <ArrowRight className="w-4 h-4" />
@@ -368,9 +376,9 @@ export default function ContactPage() {
               </div>
 
               {/* Additional Services */}
-              <div className="bg-gray-50 p-6 border border-gray-200 shadow-sm">
-                <h3 className="heading-4 text-gray-900 mb-4">Our Services</h3>
-                <ul className="space-y-3">
+              <div className="surface stack-md">
+                <h3 className="heading-4">Our Services</h3>
+                <ul className="stack-sm">
                   {[
                     "Product consultation and recommendations",
                     "Professional measurement services",
@@ -378,9 +386,9 @@ export default function ContactPage() {
                     "Installation referrals",
                     "Bulk order discounts",
                   ].map((service) => (
-                    <li key={service} className="flex items-start gap-3">
+                    <li key={service} className="flex-row" style={{ alignItems: "flex-start", gap: "0.75rem" }}>
                       <CheckCircle className="w-5 h-5 text-[var(--geowags-red)] flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600">{service}</span>
+                      <span className="text-subtle">{service}</span>
                     </li>
                   ))}
                 </ul>
@@ -391,10 +399,10 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ CTA */}
-      <section className="section bg-gray-50">
-        <div className="container text-center">
-          <h2 className="heading-3 text-gray-900 mb-4">Have More Questions?</h2>
-          <p className="text-gray-600 mb-6">
+      <section className="page-content section-muted">
+        <div className="container text-center stack-md">
+          <h2 className="heading-3">Have More Questions?</h2>
+          <p className="text-subtle">
             Check out our frequently asked questions or reach out directly.
           </p>
           <Link href="/faq" className="btn btn-outline">

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, X, Filter } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PRODUCT_CATEGORIES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 type FilterSection = {
   id: string;
@@ -109,14 +110,14 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
   }, 0);
 
   const FilterContent = () => (
-    <div className="space-y-6">
+    <div className="filters-panel">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-        <h3 className="font-medium text-gray-900">Filters</h3>
+      <div className="filters-header">
+        <h3 className="heading-4">Filters</h3>
         {activeFilterCount > 0 && (
           <button
             onClick={handleClearAll}
-            className="text-sm text-[var(--geowags-red)] hover:text-[var(--geowags-red-dark)] transition-colors"
+            className="filters-clear"
           >
             Clear all ({activeFilterCount})
           </button>
@@ -125,17 +126,21 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
 
       {/* Filter Sections */}
       {filterSections.map((section) => (
-        <div key={section.id} className="border-b border-gray-200 pb-4">
+        <div key={section.id} className="filter-section">
           <button
             onClick={() => handleToggleSection(section.id)}
-            className="flex items-center justify-between w-full py-2 text-left"
+            className="filter-toggle"
             aria-expanded={expandedSections.includes(section.id)}
           >
-            <span className="font-medium text-gray-900">{section.label}</span>
+            <span className="text-subtle">{section.label}</span>
             <ChevronDown
-              className={`w-5 h-5 text-gray-500 transition-transform ${
-                expandedSections.includes(section.id) ? "rotate-180" : ""
-              }`}
+              className="text-subtle"
+              style={{
+                transform: expandedSections.includes(section.id)
+                  ? "rotate(180deg)"
+                  : "rotate(0deg)",
+                transition: "transform 0.2s ease",
+              }}
             />
           </button>
 
@@ -148,19 +153,18 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
                 transition={{ duration: 0.2 }}
                 className="overflow-hidden"
               >
-                <div className="pt-2 space-y-2">
+                <div className="filter-options">
                   {section.options.map((option) => (
                     <label
                       key={option.value}
-                      className="flex items-center gap-3 cursor-pointer group"
+                      className="filter-option"
                     >
                       <input
                         type="checkbox"
                         checked={isFilterActive(section.id, option.value)}
                         onChange={() => handleFilterChange(section.id, option.value)}
-                        className="w-4 h-4 border-gray-300 rounded text-[var(--geowags-red)] focus:ring-[var(--geowags-red)] focus:ring-offset-0"
                       />
-                      <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
+                      <span className="text-subtle">
                         {option.label}
                       </span>
                     </label>
@@ -177,19 +181,23 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
   return (
     <>
       {/* Desktop Filters */}
-      <aside className={`hidden lg:block ${className}`}>
-        <FilterContent />
+      <aside className={cn("hide-mobile", className)}>
+        <div
+          style={{ position: "sticky", top: "calc(var(--header-height) + 2rem)" }}
+        >
+          <FilterContent />
+        </div>
       </aside>
 
       {/* Mobile Filter Button */}
       <button
         onClick={() => setMobileFiltersOpen(true)}
-        className="lg:hidden fixed bottom-6 right-6 z-40 btn btn-primary shadow-lg"
+        className="mobile-filters-button show-mobile btn btn-primary"
       >
         <Filter className="w-5 h-5" />
         Filters
         {activeFilterCount > 0 && (
-          <span className="ml-2 w-5 h-5 flex items-center justify-center bg-white text-[var(--geowags-red)] text-xs font-bold rounded-full">
+          <span className="badge badge-primary" style={{ minWidth: "1.5rem" }}>
             {activeFilterCount}
           </span>
         )}
@@ -204,7 +212,7 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="lg:hidden fixed inset-0 bg-black/50 z-50"
+              className="mobile-filters-backdrop show-mobile"
               onClick={() => setMobileFiltersOpen(false)}
             />
 
@@ -214,14 +222,14 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="lg:hidden fixed top-0 right-0 w-full max-w-sm h-full bg-white z-50 overflow-y-auto"
+              className="mobile-filters-panel show-mobile"
             >
               {/* Header */}
-              <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-                <h2 className="font-medium text-lg">Filters</h2>
+              <div className="mobile-filters-header">
+                <h2 className="heading-4">Filters</h2>
                 <button
                   onClick={() => setMobileFiltersOpen(false)}
-                  className="p-2 text-gray-500 hover:text-gray-700"
+                  className="icon-button"
                   aria-label="Close filters"
                 >
                   <X className="w-6 h-6" />
@@ -229,15 +237,15 @@ export const ProductFilters = ({ className = "" }: ProductFiltersProps) => {
               </div>
 
               {/* Content */}
-              <div className="p-4">
+              <div className="mobile-filters-body">
                 <FilterContent />
               </div>
 
               {/* Footer */}
-              <div className="sticky bottom-0 bg-white border-t border-gray-200 p-4">
+              <div className="mobile-filters-footer">
                 <button
                   onClick={() => setMobileFiltersOpen(false)}
-                  className="btn btn-primary w-full"
+                  className="btn btn-primary full-width"
                 >
                   Apply Filters
                 </button>

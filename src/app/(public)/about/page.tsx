@@ -48,57 +48,43 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-layout">
       {/* Hero Section */}
-      <section className="relative section overflow-hidden border-b border-gray-200 bg-white">
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 45h90M45 0v90' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
-          }}
-        />
-
-        <div className="container relative">
-          <div className="max-w-3xl space-y-4">
-            <span className="inline-block mb-4 text-sm uppercase tracking-[0.2em] text-[var(--geowags-red)] font-medium">
-              About Us
-            </span>
-            <h1 className="heading-display text-gray-900 mb-6">
-              Building Beautiful Spaces Together
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              For over a decade, Geowags has been Ghana&apos;s trusted partner in
-              transforming houses into homes. We bring world-class products and
-              expert guidance to every project.
+      <section className="page-header">
+        <div className="container">
+          <div className="page-header__body">
+            <span className="hero__eyebrow">About Us</span>
+            <h1 className="heading-display">Building Beautiful Spaces Together</h1>
+            <p className="body-large text-subtle">
+              For over a decade, Geowags has been Ghana&apos;s trusted partner in transforming houses into homes. We bring world-class products and expert guidance to every project.
             </p>
           </div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section id="story" className="section bg-white">
+      <section id="story" className="page-content">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-16 items-center">
+          <div className="about-grid">
             {/* Image */}
-            <div className="relative">
-              <div className="relative aspect-[3/4] bg-gray-50 border border-gray-200 shadow-sm">
+            <div className="about-visual">
+              <div className="about-visual__frame">
                 <div
-                  className="absolute inset-0 opacity-[0.08]"
+                  className="absolute inset-0"
+                  style={{ opacity: 0.08 }}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
                   }}
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[var(--geowags-red)] opacity-80" />
+              <div className="about-visual__accent" />
             </div>
 
             {/* Content */}
-            <div className="space-y-4">
-              <span className="caption text-[var(--geowags-red)] mb-4 block">Our Story</span>
-              <h2 className="heading-1 text-gray-900 mb-6">
-                A Legacy of Quality & Service
-              </h2>
-              <div className="space-y-4 text-gray-600 mb-8">
+            <div className="stack-lg">
+              <span className="caption text-primary">Our Story</span>
+              <h2 className="heading-1">A Legacy of Quality & Service</h2>
+              <div className="stack-md text-subtle">
                 <p>
                   Geowags was founded with a simple but powerful mission: to make
                   premium home improvement products accessible to everyone in Ghana.
@@ -130,15 +116,15 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="section bg-gray-50">
+      <section className="page-content section-muted">
         <div className="container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid-responsive grid-four">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center bg-white border border-gray-200 p-6 shadow-sm">
-                <span className="block text-4xl lg:text-5xl font-display font-bold text-[var(--geowags-red)] mb-2">
+              <div key={stat.label} className="surface text-center stack-sm">
+                <span className="heading-1 text-primary">
                   {stat.value}
                 </span>
-                <span className="text-gray-600">{stat.label}</span>
+                <span className="text-subtle">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -146,15 +132,15 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section bg-white">
+      <section className="page-content">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            <div className="p-8 lg:p-12 bg-gray-50 border border-gray-200 shadow-sm">
-              <div className="w-14 h-14 flex items-center justify-center bg-[var(--geowags-red)] text-white mb-6">
+          <div className="grid-two">
+            <div className="surface stack-md">
+              <div className="feature-card__icon" style={{ background: "var(--geowags-red)", color: "white" }}>
                 <Target className="w-7 h-7" />
               </div>
-              <h3 className="heading-2 text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="heading-2">Our Mission</h3>
+              <p className="text-subtle leading-relaxed">
                 To be Ghana&apos;s most trusted supplier of premium home improvement
                 products, delivering exceptional quality, expert guidance, and
                 outstanding service to every customer. We aim to make beautiful,
@@ -162,12 +148,12 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-8 lg:p-12 bg-white border border-gray-200 shadow-sm">
-              <div className="w-14 h-14 flex items-center justify-center bg-[var(--geowags-red)] text-white mb-6">
+            <div className="surface stack-md">
+              <div className="feature-card__icon" style={{ background: "var(--geowags-red)", color: "white" }}>
                 <Eye className="w-7 h-7" />
               </div>
-              <h3 className="heading-2 text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="heading-2">Our Vision</h3>
+              <p className="text-subtle leading-relaxed">
                 To transform the home improvement industry in Ghana by setting new
                 standards for product quality, customer experience, and design
                 innovation. We envision a future where every Ghanaian home reflects
@@ -179,26 +165,26 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section bg-gray-50">
+      <section className="page-content section-muted">
         <div className="container">
           <div className="section-header">
-            <span className="caption text-[var(--geowags-red)] mb-4 block">What Drives Us</span>
-            <h2 className="heading-1 text-gray-900 mb-4">Our Core Values</h2>
-            <p className="body-large text-gray-600">
+            <span className="caption text-primary mb-4 block">What Drives Us</span>
+            <h2 className="heading-1">Our Core Values</h2>
+            <p className="body-large text-subtle">
               These principles guide everything we do at Geowags.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="about-features__grid">
             {values.map((value) => {
               const IconComponent = value.icon;
               return (
-                <div key={value.title} className="bg-white p-8 border border-gray-200 shadow-sm h-full">
-                  <div className="w-14 h-14 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)] mb-6">
+                <div key={value.title} className="surface stack-sm" style={{ height: "100%" }}>
+                  <div className="feature-card__icon">
                     <IconComponent className="w-7 h-7" />
                   </div>
-                  <h3 className="heading-4 text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                  <h3 className="heading-4">{value.title}</h3>
+                  <p className="text-subtle text-sm leading-relaxed">{value.description}</p>
                 </div>
               );
             })}
@@ -207,38 +193,21 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="section bg-white">
+      <section className="page-content">
         <div className="container">
           <div className="section-header">
-            <span className="caption text-[var(--geowags-red)] mb-4 block">Our Journey</span>
-            <h2 className="heading-1 text-gray-900 mb-4">Key Milestones</h2>
+            <span className="caption text-primary mb-4 block">Our Journey</span>
+            <h2 className="heading-1">Key Milestones</h2>
           </div>
 
-          <div className="relative max-w-3xl mx-auto">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2" />
-
-            {milestones.map((milestone, index) => (
-              <div
-                key={milestone.year}
-                className={`relative flex items-center gap-8 mb-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Content */}
-                <div className={`flex-1 pl-8 md:pl-0 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                  <span className="text-[var(--geowags-red)] font-display text-2xl font-bold mb-2 block">
-                    {milestone.year}
-                  </span>
-                  <h4 className="heading-4 text-gray-900 mb-2">{milestone.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{milestone.description}</p>
-                </div>
-
-                {/* Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-[var(--geowags-red)] rounded-full -translate-x-1/2 ring-4 ring-white" />
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1" />
+          <div className="stack-lg" style={{ maxWidth: "48rem", margin: "0 auto" }}>
+            {milestones.map((milestone) => (
+              <div key={milestone.year} className="surface stack-sm">
+                <span className="text-primary font-display text-2xl font-bold">
+                  {milestone.year}
+                </span>
+                <h4 className="heading-4">{milestone.title}</h4>
+                <p className="text-subtle text-sm leading-relaxed">{milestone.description}</p>
               </div>
             ))}
           </div>

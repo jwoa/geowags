@@ -30,17 +30,17 @@ const features = [
 
 export const AboutPreview = () => {
   return (
-    <section className="section bg-white overflow-hidden">
+    <section className="section">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="about-grid">
           {/* Content */}
-          <div>
+          <div className="stack-md">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="caption text-[var(--geowags-red)] mb-4 block"
+              className="caption text-primary"
             >
               About Geowags
             </motion.span>
@@ -50,10 +50,10 @@ export const AboutPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="heading-1 text-gray-900 mb-6"
+              className="heading-1"
             >
               Ghana&apos;s Premier <br />
-              <span className="text-[var(--geowags-red)]">Home Improvement</span> Destination
+              <span className="text-primary">Home Improvement</span> Destination
             </motion.h2>
 
             <motion.p
@@ -61,7 +61,7 @@ export const AboutPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="body-large text-gray-600 mb-8"
+              className="body-large text-subtle"
             >
               For years, Geowags has been at the forefront of bringing world-class
               housewares, tiles, and bathroom fixtures to Ghana. We believe that
@@ -73,7 +73,7 @@ export const AboutPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-gray-600 mb-10"
+              className="text-subtle"
             >
               Our curated collection represents the best of international craftsmanship,
               carefully selected to meet the diverse needs of homeowners, architects,
@@ -86,22 +86,22 @@ export const AboutPreview = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Link href="/about" className="btn btn-primary btn-large group">
+              <Link href="/about" className="btn btn-primary btn-large">
                 Learn More About Us
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
           </div>
 
           {/* Visual */}
-          <div className="relative">
+          <div className="about-visual">
             {/* Main Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative aspect-[4/5] bg-gray-100"
+              className="about-visual__frame"
             >
               {/* Placeholder - replace with actual image */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -114,7 +114,7 @@ export const AboutPreview = () => {
               </div>
 
               {/* Decorative accent */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[var(--geowags-red)]" />
+              <div className="about-visual__accent" />
             </motion.div>
 
             {/* Stats Overlay */}
@@ -123,32 +123,32 @@ export const AboutPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute bottom-4 right-4 md:bottom-auto md:-bottom-8 md:right-8 bg-white shadow-xl p-6 md:p-8 max-w-xs"
+              className="about-stats"
             >
-              <div className="grid grid-cols-2 gap-6">
+              <div className="about-stats__grid">
                 <div>
-                  <span className="block text-4xl font-display font-bold text-[var(--geowags-red)]">
+                  <span className="block heading-1 text-primary">
                     10+
                   </span>
-                  <span className="text-sm text-gray-600">Years Experience</span>
+                  <span className="text-subtle text-sm">Years Experience</span>
                 </div>
                 <div>
-                  <span className="block text-4xl font-display font-bold text-[var(--geowags-red)]">
+                  <span className="block heading-1 text-primary">
                     5k+
                   </span>
-                  <span className="text-sm text-gray-600">Happy Customers</span>
+                  <span className="text-subtle text-sm">Happy Customers</span>
                 </div>
                 <div>
-                  <span className="block text-4xl font-display font-bold text-[var(--geowags-red)]">
+                  <span className="block heading-1 text-primary">
                     500+
                   </span>
-                  <span className="text-sm text-gray-600">Products</span>
+                  <span className="text-subtle text-sm">Products</span>
                 </div>
                 <div>
-                  <span className="block text-4xl font-display font-bold text-[var(--geowags-red)]">
+                  <span className="block heading-1 text-primary">
                     50+
                   </span>
-                  <span className="text-sm text-gray-600">Brands</span>
+                  <span className="text-subtle text-sm">Brands</span>
                 </div>
               </div>
             </motion.div>
@@ -161,9 +161,9 @@ export const AboutPreview = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-24 pt-16 border-t border-gray-200"
+          className="about-features"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="about-features__grid">
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
@@ -173,13 +173,13 @@ export const AboutPreview = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-center"
+                  className="feature-card"
                 >
-                  <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center bg-gray-100 text-[var(--geowags-red)]">
+                  <div className="feature-card__icon">
                     <IconComponent className="w-7 h-7" />
                   </div>
-                  <h3 className="heading-4 text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-600">{feature.description}</p>
+                  <h3 className="heading-4">{feature.title}</h3>
+                  <p className="text-subtle text-sm">{feature.description}</p>
                 </motion.div>
               );
             })}

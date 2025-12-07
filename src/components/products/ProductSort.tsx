@@ -21,15 +21,16 @@ export const ProductSort = () => {
   };
 
   return (
-    <div className="flex items-center gap-3">
-      <label htmlFor="sort" className="text-sm text-gray-600">
+    <div className="flex-row" style={{ gap: "0.75rem" }}>
+      <label htmlFor="sort" className="text-subtle text-sm">
         Sort by:
       </label>
       <select
         id="sort"
         value={currentSort}
         onChange={handleSortChange}
-        className="input py-2 px-3 w-auto min-w-[150px]"
+        className="input"
+        style={{ width: "auto", minWidth: "150px", padding: "0.5rem 0.75rem" }}
       >
         {sortOptions.map((option) => (
           <option key={option.value} value={option.value}>

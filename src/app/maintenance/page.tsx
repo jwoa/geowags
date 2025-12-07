@@ -26,10 +26,10 @@ const statusHighlights = [
 
 export default function MaintenancePage() {
   return (
-    <main className="min-h-screen bg-white flex items-center">
+    <main className="min-h-screen bg-white">
       <section className="section w-full">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
+        <div className="container flex flex-col items-center gap-14 md:gap-16">
+          <div className="max-w-4xl text-center stack-xl">
             <p className="caption text-gray-500 tracking-[0.2em] uppercase">
               Maintenance
             </p>
@@ -40,7 +40,7 @@ export default function MaintenancePage() {
               Our site is temporarily offline while we apply upgrades to deliver
               a smoother, more refined experience. Thank you for your patience.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`mailto:${SITE_CONFIG.email}`}
                 className="btn btn-primary"
@@ -58,11 +58,11 @@ export default function MaintenancePage() {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-3 max-w-4xl mx-auto">
+          <div className="w-full max-w-5xl grid gap-6 md:gap-8 md:grid-cols-3">
             {statusHighlights.map((item) => (
               <article
                 key={item.label}
-                className="card p-6 text-left space-y-2"
+                className="card p-7 md:p-8 text-left stack-md h-full"
                 aria-label={item.label}
                 tabIndex={0}
               >
@@ -72,7 +72,7 @@ export default function MaintenancePage() {
             ))}
           </div>
 
-          <div className="mt-10 text-center text-sm text-gray-500">
+          <div className="text-center text-sm text-gray-500">
             <span className="inline-flex items-center gap-2" aria-live="polite">
               <span
                 className="h-2.5 w-2.5 rounded-full bg-[#DC2626] animate-pulse"

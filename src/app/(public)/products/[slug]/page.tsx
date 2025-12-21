@@ -5,13 +5,13 @@ import { notFound } from "next/navigation";
 import { ChevronRight, Share2, Check, Truck, Shield, Phone } from "lucide-react";
 import { ProductGrid } from "@/components/products";
 import { SITE_CONFIG } from "@/lib/constants";
-import { getProductBySlug, getProductsByCategory, getAllCategories } from "@/lib/content";
+import { getProductBySlug, getProductsByCategory, getAllCategories, getAllProducts } from "@/lib/content";
 type ProductPageProps = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -31,8 +31,13 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
+export async function generateStaticParams() {
+  const products = getAllProducts();
+  return products.map((product) => ({ slug: product.slug }));
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const product = getProductBySlug(slug);
 
   if (!product) {

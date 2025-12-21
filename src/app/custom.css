@@ -28,7 +28,7 @@
 .flex-center { display: flex; align-items: center; justify-content: center; }
 .flex-wrap { flex-wrap: wrap; }
 
-.surface { background: var(--white); border: 1px solid var(--border); border-radius: 4px; box-shadow: var(--shadow-soft); }
+.surface { background: var(--white); border: 1px solid var(--border); border-radius: 4px; box-shadow: var(--shadow-soft); padding: var(--space-6); }
 .surface-muted { background: var(--gray-50); border: 1px solid var(--border); }
 .surface-dark { background: var(--gray-900); color: var(--white); }
 

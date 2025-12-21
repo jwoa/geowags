@@ -80,7 +80,7 @@ export default async function StaticPage({ params }: StaticPageProps) {
       <section className="page-content">
         <div className="container">
           <div className="surface" style={{ maxWidth: "48rem", margin: "0 auto", padding: "2.5rem" }}>
-            <article dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
+            <article className="prose" dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
           </div>
         </div>
       </section>

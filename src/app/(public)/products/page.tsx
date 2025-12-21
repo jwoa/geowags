@@ -8,8 +8,11 @@ export const metadata: Metadata = {
   title: "Products",
   description: `Browse our extensive collection of premium tiles, bathroom fixtures, and housewares at ${SITE_CONFIG.name}. Quality products for every home improvement project.`,
 };
+
+export const dynamic = "force-static";
+
 type ProductsPageProps = {
-  searchParams: Promise<{
+  searchParams?: {
     category?: string;
     collection?: string;
     color?: string;
@@ -18,11 +21,11 @@ type ProductsPageProps = {
     search?: string;
     sort?: string;
     page?: string;
-  }>;
+  };
 };
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const params = await searchParams;
+  const params = searchParams || {};
   const categories = getAllCategories();
   
   // Fetch and filter products from markdown content

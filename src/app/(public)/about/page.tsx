@@ -47,6 +47,12 @@ const stats = [
 ];
 
 export default function AboutPage() {
+  const overlayStyle = {
+    opacity: 0.08,
+    backgroundImage:
+      "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E\")",
+  };
+
   return (
     <div className="page-layout">
       {/* Hero Section */}
@@ -71,10 +77,7 @@ export default function AboutPage() {
               <div className="about-visual__frame">
                 <div
                   className="absolute inset-0"
-                  style={{ opacity: 0.08 }}
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23E5E7EB' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
-                  }}
+                  style={overlayStyle}
                 />
               </div>
               <div className="about-visual__accent" />

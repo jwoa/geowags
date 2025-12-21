@@ -13,6 +13,17 @@
 # testing
 /coverage
 
+# archive
+/geowags-archive
+/geowags-archive/*
+/geowags-archive/**
+/geowags-archive/**/*
+/geowags-archive/**/**
+/geowags-archive/**/**/*
+/geowags-archive/**/**/**
+/geowags-archive/**/**/**/*
+/geowags-archive/**/**/**/**
+/geowags-archive/**/**/**/**/*
 # next.js
 /.next/
 /out/

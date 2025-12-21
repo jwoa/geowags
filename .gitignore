@@ -22,7 +22,15 @@
 
 # archive
 /geowags-archive
-
+/geowags-archive/*
+/geowags-archive/**
+/geowags-archive/**/*
+/geowags-archive/**/**
+/geowags-archive/**/**/*
+/geowags-archive/**/**/**
+/geowags-archive/**/**/**/*
+/geowags-archive/**/**/**/**
+/geowags-archive/**/**/**/**/*
 # misc
 .DS_Store
 *.pem

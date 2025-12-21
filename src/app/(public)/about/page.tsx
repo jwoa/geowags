@@ -43,7 +43,28 @@ const stats = [
   { value: "10+", label: "Years Experience" },
   { value: "5,000+", label: "Happy Customers" },
   { value: "500+", label: "Products" },
-  { value: "50+", label: "Partner Brands" },
+  { value: "30+", label: "Team Members" },
+];
+
+const team = [
+  {
+    name: "Mr. George Wiafe Agyekum",
+    role: "C.E.O",
+    image: "/images/team/george-wiafe-agyekum.png",
+    description: "Founder and visionary leader, Mr. George has been the driving force behind Geowags' growth and commitment to quality.",
+  },
+  {
+    name: "Mr. Kwame Wiafe Agyekum",
+    role: "Managing Director",
+    image: "/images/team/kwame-wiafe-agyekum.png",
+    description: "Overseeing day-to-day operations, Mr. Kwame ensures excellence in customer service and product delivery.",
+  },
+  {
+    name: "Mr. Eric Abrakwah",
+    role: "General Manager",
+    image: "/images/team/eric-abrakwah.png",
+    description: "With extensive industry experience, Mr. Eric manages our team and maintains our high standards of service.",
+  },
 ];
 
 export default function AboutPage() {
@@ -195,8 +216,59 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Team Photo */}
       <section className="page-content">
+        <div className="container">
+          <div className="section-header">
+            <span className="caption text-primary mb-4 block">Our Team</span>
+            <h2 className="heading-1">The People Behind Geowags</h2>
+            <p className="body-large text-subtle">
+              Our dedicated team of over 30 professionals is committed to serving you.
+            </p>
+          </div>
+
+          <div className="relative aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-lg mb-16">
+            <Image
+              src="/images/hero/aboutus.jpg"
+              alt="The Geowags team at our showroom"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+
+          {/* Leadership */}
+          <div className="section-header">
+            <h3 className="heading-2">Leadership Team</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member) => (
+              <div key={member.name} className="surface text-center stack-md">
+                <div className="relative w-32 h-32 mx-auto overflow-hidden rounded-full border-4 border-gray-100">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    sizes="128px"
+                  />
+                </div>
+                <div>
+                  <h4 className="heading-4">{member.name}</h4>
+                  <span className="text-primary text-sm font-medium uppercase tracking-wider">
+                    {member.role}
+                  </span>
+                </div>
+                <p className="text-subtle text-sm leading-relaxed">{member.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="page-content section-muted">
         <div className="container">
           <div className="section-header">
             <span className="caption text-primary mb-4 block">Our Journey</span>

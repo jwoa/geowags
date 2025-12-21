@@ -16,6 +16,8 @@ function markdownToProduct(file: {
     slug: file.slug,
     name: file.data.name,
     category: file.data.category,
+    subcategory: file.data.subcategory,
+    brand: file.data.brand,
     collection: file.data.collection,
     featured: file.data.featured,
     new: file.data.new,
@@ -86,6 +88,20 @@ export function getProductsByCollection(collectionSlug: string): Product[] {
 }
 
 /**
+ * Get products by brand
+ */
+export function getProductsByBrand(brandSlug: string): Product[] {
+  return getActiveProducts().filter((product) => product.brand === brandSlug);
+}
+
+/**
+ * Get products by subcategory
+ */
+export function getProductsBySubcategory(subcategorySlug: string): Product[] {
+  return getActiveProducts().filter((product) => product.subcategory === subcategorySlug);
+}
+
+/**
  * Search products
  */
 export function searchProducts(query: string): Product[] {
@@ -137,6 +153,8 @@ export function searchProducts(query: string): Product[] {
  */
 export type ProductFilters = {
   categories?: string[];
+  subcategories?: string[];
+  brands?: string[];
   collections?: string[];
   colors?: string[];
   sizes?: string[];
@@ -150,6 +168,14 @@ export function filterProducts(filters: ProductFilters): Product[] {
 
   if (filters.categories && filters.categories.length > 0) {
     products = products.filter((p) => filters.categories!.includes(p.category));
+  }
+
+  if (filters.subcategories && filters.subcategories.length > 0) {
+    products = products.filter((p) => p.subcategory && filters.subcategories!.includes(p.subcategory));
+  }
+
+  if (filters.brands && filters.brands.length > 0) {
+    products = products.filter((p) => p.brand && filters.brands!.includes(p.brand));
   }
 
   if (filters.collections && filters.collections.length > 0) {
@@ -193,6 +219,8 @@ export function createProduct(product: Omit<Product, "descriptionHtml">): void {
     name: product.name,
     slug: product.slug,
     category: product.category,
+    subcategory: product.subcategory,
+    brand: product.brand,
     collection: product.collection,
     featured: product.featured,
     new: product.new,

@@ -11,8 +11,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: [SITE_CONFIG.phone],
-    action: { label: "Call now", href: `tel:${SITE_CONFIG.phone}` },
+    details: [SITE_CONFIG.phone, SITE_CONFIG.phoneAlt],
+    action: { label: "Call now", href: `tel:${SITE_CONFIG.phone.replace(/\s/g, "")}` },
   },
   {
     icon: Mail,
@@ -23,13 +23,13 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    details: [SITE_CONFIG.address],
-    action: { label: "Get directions", href: "https://maps.google.com" },
+    details: [SITE_CONFIG.address, SITE_CONFIG.poBox],
+    action: { label: "Get directions", href: "https://maps.google.com/maps?q=Geowags+Limited+Adenta+Ghana" },
   },
   {
     icon: Clock,
     title: "Business Hours",
-    details: ["Mon - Fri: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 4:00 PM", "Sun: Closed"],
+    details: [SITE_CONFIG.hours.weekdays, SITE_CONFIG.hours.saturday, SITE_CONFIG.hours.sunday],
   },
 ];
 
@@ -351,28 +351,18 @@ export default function ContactPage() {
               </p>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Google Maps Embed */}
               <div className="relative" style={{ aspectRatio: "4 / 3" }}>
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(135deg, #e5e7eb, #d1d5db)" }}
-                >
-                  <div className="absolute inset-0 flex-center text-subtle">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 mx-auto mb-2 text-primary" />
-                      <p className="text-sm text-subtle">Interactive map coming soon</p>
-                      <a
-                        href="https://maps.google.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="category-card__cta"
-                      >
-                        Open in Google Maps
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                <iframe
+                  src={SITE_CONFIG.googleMaps}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Geowags Location Map"
+                />
               </div>
 
               {/* Additional Services */}

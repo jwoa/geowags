@@ -1,17 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Grid3X3, Bath, ChefHat, Home } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Category } from "@/lib/content";
-
-const categoryIcons: Record<string, React.ElementType> = {
-  Grid3X3: Grid3X3,
-  Bath: Bath,
-  ChefHat: ChefHat,
-  Home: Home,
-};
 
 type CategoryShowcaseProps = {
   categories: Category[];
@@ -84,8 +76,6 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
           className="category-grid"
         >
           {categories.map((category) => {
-            const IconComponent = categoryIcons[category.icon];
-
             return (
               <motion.div key={category.slug} variants={itemVariants}>
                 <Link
@@ -101,17 +91,6 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
 
                   {/* Content */}
                   <div className="category-card__content">
-                    <div className="category-card__top">
-                      {IconComponent && (
-                        <div className="category-card__icon">
-                          <IconComponent className="w-7 h-7" />
-                        </div>
-                      )}
-                      <span className="category-card__slug">
-                        {category.slug.replace("-", " ")}
-                      </span>
-                    </div>
-
                     <div className="mt-auto">
                       <h3 className="heading-3">
                         {category.name}
@@ -141,7 +120,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center stack-sm"
         >
-          <Link href="/products" className="btn btn-outline btn-large group">
+          <Link href="/products" className="btn btn-outline btn-large group max-w-[300px] w-full my-[50px] mx-auto">
             View All Products
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>

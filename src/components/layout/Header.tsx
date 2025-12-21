@@ -63,7 +63,7 @@ export const Header = () => {
       >
         <div className="container site-header__container">
           {/* Logo */}
-          <Logo variant={isScrolled ? "default" : "white"} size="md" />
+          <Logo variant="default" size="md" />
 
           {/* Desktop Navigation */}
           <nav

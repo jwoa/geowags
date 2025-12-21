@@ -136,15 +136,6 @@ export const Footer = () => {
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a
-                  href={SITE_CONFIG.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="Follow us on LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
               </div>
             </div>
           </div>

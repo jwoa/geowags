@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ChevronRight, Share2, Check, Truck, Shield, Phone } from "lucide-react";
+import { ChevronRight, Share2, Check, Truck, Shield, Phone, MessageCircle } from "lucide-react";
 import { ProductGrid } from "@/components/products";
 import { SITE_CONFIG } from "@/lib/constants";
-import { getProductBySlug, getProductsByCategory, getAllCategories, getAllProducts } from "@/lib/content";
+import { getProductBySlug, getProductsByCategory, getAllCategories, getAllProducts, getBrandBySlug } from "@/lib/content";
 type ProductPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -46,6 +46,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const categories = getAllCategories();
   const category = categories.find((c) => c.slug === product.category);
+  const brand = product.brand ? getBrandBySlug(product.brand) : null;
   
   // Get related products from same category
   const relatedProductsFull = getProductsByCategory(product.category)
@@ -76,7 +77,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="pt-[var(--header-height)]">
       {/* Breadcrumb */}
-      <nav className="bg-gray-50 py-5" aria-label="Breadcrumb">
+      <nav className="bg-gray-50 py-4" aria-label="Breadcrumb">
         <div className="container">
           <ol className="flex items-center gap-2 text-sm">
             <li>
@@ -108,13 +109,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </nav>
 
       {/* Product Details */}
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 xl:gap-20 items-start">
+      <section className="pt-10 pb-16 lg:pt-16 lg:pb-24 mt-[85px] mb-[85px]">
+        <div className="container max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 xl:gap-20 items-start">
             {/* Gallery */}
             <div className="space-y-5">
               {/* Main Image */}
-              <div className="relative aspect-square bg-gray-100 overflow-hidden border border-gray-200 shadow-sm">
+              <div className="relative aspect-square bg-gray-50 overflow-hidden rounded-lg border border-gray-100">
                 <Image
                   src={primaryImage?.url || "/images/placeholder.jpg"}
                   alt={primaryImage?.alt || product.name}
@@ -157,15 +158,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Product Info */}
-            <div className="lg:py-2 space-y-8">
-              {/* Category & Collection */}
-              <div className="flex items-center gap-3 text-sm text-gray-500">
+            <div className="space-y-8">
+              {/* Category, Brand & Collection */}
+              <div className="flex items-center flex-wrap gap-2 text-sm text-gray-500">
                 <Link
                   href={`/products?category=${product.category}`}
-                  className="text-xs uppercase tracking-wider hover:text-[var(--geowags-red)] transition-colors"
+                  className="text-xs uppercase tracking-widest font-medium hover:text-[var(--geowags-red)] transition-colors"
                 >
                   {category?.name || product.category}
                 </Link>
+                {brand && (
+                  <>
+                    <span className="text-gray-300">|</span>
+                    <Link
+                      href={`/products?brand=${brand.slug}`}
+                      className="text-xs uppercase tracking-wider text-[var(--geowags-red)] font-medium hover:text-[var(--geowags-red-dark)] transition-colors"
+                    >
+                      {brand.name}
+                    </Link>
+                  </>
+                )}
                 {product.collection && (
                   <>
                     <span className="text-gray-300">|</span>
@@ -180,13 +192,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Title */}
-              <h1 className="heading-1 text-gray-900">{product.name}</h1>
+              <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 leading-tight tracking-tight">{product.name}</h1>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed">{product.description}</p>
+              <p className="text-gray-600 leading-relaxed text-lg max-w-xl mt-[15px] mb-[15px]">{product.description}</p>
 
               {/* Variants */}
-              <div className="space-y-6">
+              <div className="space-y-6 pt-2">
                 {/* Colors */}
                 {product.colors.length > 0 && (
                   <div>
@@ -268,19 +280,36 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link href="/contact" className="btn btn-primary btn-large flex-1">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a 
+                  href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi, I'm interested in the ${encodeURIComponent(product.name)}. Please provide pricing and availability.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-large flex-1"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Inquiry
+                </a>
+                <Link href="/contact" className="btn btn-secondary btn-large sm:min-w-[160px]">
                   <Phone className="w-5 h-5" />
-                  Inquire Now
+                  Call Us
                 </Link>
-                <button className="btn btn-secondary btn-large sm:min-w-[140px]">
-                  <Share2 className="w-5 h-5" />
-                  Share
-                </button>
+              </div>
+              
+              {/* Contact Info */}
+              <div className="bg-gray-50 border border-gray-200 p-[10px] rounded-lg mt-[15px] mb-[15px]">
+                <p className="text-sm text-gray-600 mb-2">
+                  <strong>Need help?</strong> Our team is here to assist you.
+                </p>
+                <p className="text-sm text-gray-500">
+                  Call: <a href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`} className="text-[var(--geowags-red)] hover:underline">{SITE_CONFIG.phone}</a>
+                  <span className="mx-2">|</span>
+                  Email: <a href={`mailto:${SITE_CONFIG.email}`} className="text-[var(--geowags-red)] hover:underline">{SITE_CONFIG.email}</a>
+                </p>
               </div>
 
               {/* Trust Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
+              <div className="flex flex-col gap-4 pt-8 mt-4 border-t border-gray-200">
                 <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
                   <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Truck className="w-5 h-5" />
@@ -343,9 +372,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       {/* Related Products */}
-      <section className="section bg-gray-50">
+      <section className="pt-[25px] pb-[25px] bg-gray-50">
         <div className="container">
-          <h2 className="heading-2 text-gray-900 mb-8">Related Products</h2>
+          <h2 className="heading-2 text-gray-900 mb-[25px]">Related Products</h2>
           <ProductGrid products={relatedProducts} />
         </div>
       </section>

@@ -20,6 +20,9 @@
 # production
 /build
 
+# archive
+/geowags-archive
+
 # misc
 .DS_Store
 *.pem

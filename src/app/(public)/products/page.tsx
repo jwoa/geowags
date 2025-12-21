@@ -11,21 +11,23 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-static";
 
+type SearchParams = {
+  category?: string;
+  collection?: string;
+  color?: string;
+  size?: string;
+  finish?: string;
+  search?: string;
+  sort?: string;
+  page?: string;
+};
+
 type ProductsPageProps = {
-  searchParams?: {
-    category?: string;
-    collection?: string;
-    color?: string;
-    size?: string;
-    finish?: string;
-    search?: string;
-    sort?: string;
-    page?: string;
-  };
+  searchParams: Promise<SearchParams>;
 };
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const params = searchParams || {};
+  const params = (await searchParams) || {};
   const categories = getAllCategories();
   
   // Fetch and filter products from markdown content

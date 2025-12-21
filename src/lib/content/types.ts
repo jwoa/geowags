@@ -3,6 +3,8 @@ export type ProductFrontmatter = {
   name: string;
   slug: string;
   category: string;
+  subcategory?: string;
+  brand?: string;
   collection?: string;
   featured: boolean;
   new: boolean;
@@ -49,11 +51,37 @@ export type PageFrontmatter = {
   lastUpdated?: string;
 };
 
+// Brand frontmatter structure
+export type BrandFrontmatter = {
+  name: string;
+  slug: string;
+  description: string;
+  country?: string;
+  logo?: string;
+  website?: string;
+  order: number;
+};
+
+// Brand with content
+export type Brand = {
+  slug: string;
+  name: string;
+  description: string;
+  country?: string;
+  logo?: string;
+  website?: string;
+  order: number;
+  content: string;
+  contentHtml: string;
+};
+
 // Full product with content
 export type Product = {
   slug: string;
   name: string;
   category: string;
+  subcategory?: string;
+  brand?: string;
   collection?: string;
   featured: boolean;
   new: boolean;

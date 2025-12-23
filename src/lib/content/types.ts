@@ -26,6 +26,12 @@ export type ProductFrontmatter = {
   finishes?: string[];
 };
 
+// Subcategory structure
+export type Subcategory = {
+  name: string;
+  slug: string;
+};
+
 // Category frontmatter structure
 export type CategoryFrontmatter = {
   name: string;
@@ -34,6 +40,7 @@ export type CategoryFrontmatter = {
   icon: string;
   image: string;
   order: number;
+  subcategories?: Subcategory[];
 };
 
 // Collection frontmatter structure
@@ -113,6 +120,7 @@ export type Category = {
   icon: string;
   image: string;
   order: number;
+  subcategories: Subcategory[];
   content: string;
   contentHtml: string;
 };

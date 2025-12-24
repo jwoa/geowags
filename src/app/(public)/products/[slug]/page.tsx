@@ -75,10 +75,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const specEntries = Object.entries(specifications);
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-layout">
       {/* Breadcrumb */}
-      <nav className="bg-gray-50 py-4" aria-label="Breadcrumb">
-        <div className="container">
+      <nav className="bg-gray-50 py-8 border-b border-gray-100" aria-label="Breadcrumb">
+        <div className="container max-w-7xl">
           <ol className="flex items-center gap-2 text-sm">
             <li>
               <Link href="/" className="text-gray-500 hover:text-gray-700 transition-colors">
@@ -109,11 +109,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </nav>
 
       {/* Product Details */}
-      <section className="pt-10 pb-16 lg:pt-16 lg:pb-24 mt-[85px] mb-[85px]">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="container max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 xl:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start">
             {/* Gallery */}
-            <div className="space-y-5">
+            <div className="space-y-6">
               {/* Main Image */}
               <div className="relative aspect-square bg-gray-50 overflow-hidden rounded-lg border border-gray-100">
                 <Image
@@ -158,7 +158,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* Product Info */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:space-y-10">
               {/* Category, Brand & Collection */}
               <div className="flex items-center flex-wrap gap-2 text-sm text-gray-500">
                 <Link
@@ -195,10 +195,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 leading-tight tracking-tight">{product.name}</h1>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-lg max-w-xl mt-[15px] mb-[15px]">{product.description}</p>
+              <p className="text-gray-600 leading-relaxed text-lg">{product.description}</p>
 
               {/* Variants */}
-              <div className="space-y-6 pt-2">
+              <div className="space-y-8 pt-4">
                 {/* Colors */}
                 {product.colors.length > 0 && (
                   <div>
@@ -280,7 +280,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <a 
                   href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi, I'm interested in the ${encodeURIComponent(product.name)}. Please provide pricing and availability.`}
                   target="_blank"
@@ -297,7 +297,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
               
               {/* Contact Info */}
-              <div className="bg-gray-50 border border-gray-200 p-[10px] rounded-lg mt-[15px] mb-[15px]">
+              <div className="bg-gray-50 border border-gray-200 p-6 rounded">
                 <p className="text-sm text-gray-600 mb-2">
                   <strong>Need help?</strong> Our team is here to assist you.
                 </p>
@@ -309,7 +309,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Trust Badges */}
-              <div className="flex flex-col gap-4 pt-8 mt-4 border-t border-gray-200">
+              <div className="flex flex-col gap-4 pt-8 mt-8 border-t border-gray-200">
                 <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
                   <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Truck className="w-5 h-5" />
@@ -343,15 +343,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {/* Specifications */}
           {specEntries.length > 0 && (
-            <div className="mt-16 pt-12 border-t border-gray-200">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+            <div className="mt-20 lg:mt-28 pt-16 lg:pt-20 border-t border-gray-200">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                 <h2 className="heading-2 text-gray-900">Specifications</h2>
                 <p className="text-sm text-gray-500">
                   Material details and care to help you plan your project.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                 {specEntries.map(([key, value]) => (
                   <div
                     key={key}
@@ -372,9 +372,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       {/* Related Products */}
-      <section className="pt-[25px] pb-[25px] bg-gray-50">
-        <div className="container">
-          <h2 className="heading-2 text-gray-900 mb-[25px]">Related Products</h2>
+      <section className="py-20 md:py-24 lg:py-32 bg-gray-50">
+        <div className="container max-w-7xl">
+          <h2 className="heading-2 text-gray-900 mb-10 lg:mb-14">Related Products</h2>
           <ProductGrid products={relatedProducts} />
         </div>
       </section>

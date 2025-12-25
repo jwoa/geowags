@@ -9,6 +9,11 @@ images:
   - url: "/images/products/leon-chrome/K1070K_1.jpg"
     alt: "Leon Chrome"
     primary: true
+  - url: "/images/products/leon-chrome/K2000K_2.jpg"
+    alt: "Leon Chrome"
+    primary: false
+  - url: "/images/products/leon-chrome/K2000K_3.jpg"
+    alt: "Leon Chrome"
+    primary: false
 ---
-
 Premium Leon Chrome from Geowags. Contact us for specifications and pricing.

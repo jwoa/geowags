@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ChevronRight, Share2, Check, Truck, Shield, Phone, MessageCircle } from "lucide-react";
-import { ProductGrid } from "@/components/products";
+import { ChevronRight, Check, Truck, Shield, Phone, MessageCircle } from "lucide-react";
+import { ProductGrid, ProductGallery } from "@/components/products";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getProductBySlug, getProductsByCategory, getAllCategories, getAllProducts, getBrandBySlug } from "@/lib/content";
 type ProductPageProps = {
@@ -71,7 +70,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }));
 
   const specifications = product.specifications || {};
-  const primaryImage = product.images.find((img) => img.primary) || product.images[0];
   const specEntries = Object.entries(specifications);
 
   return (
@@ -113,52 +111,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="container max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start">
             {/* Gallery */}
-            <div className="space-y-6">
-              {/* Main Image */}
-              <div className="relative aspect-square bg-gray-50 overflow-hidden rounded-lg border border-gray-100">
-                <Image
-                  src={primaryImage?.url || "/images/placeholder.jpg"}
-                  alt={primaryImage?.alt || product.name}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-
-                {/* Badges */}
-                {(product.new || product.featured) && (
-                  <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    {product.new && <span className="badge badge-primary">New</span>}
-                    {product.featured && <span className="badge badge-accent">Featured</span>}
-                  </div>
-                )}
-              </div>
-
-              {/* Thumbnail Grid */}
-              {product.images.length > 1 && (
-                <div className="grid grid-cols-4 gap-3">
-                  {product.images.map((image, index) => (
-                    <button
-                      key={index}
-                      className="relative aspect-square bg-gray-100 overflow-hidden border border-gray-200 hover:border-[var(--geowags-red)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--geowags-red)]"
-                      aria-label={`View image ${index + 1} of ${product.images.length}`}
-                      tabIndex={0}
-                    >
-                      <Image
-                        src={image.url}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                        sizes="100px"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProductGallery
+              images={product.images}
+              productName={product.name}
+              isNew={product.new}
+              isFeatured={product.featured}
+            />
 
             {/* Product Info */}
-            <div className="space-y-8 lg:space-y-10">
+            <div className="space-y-10 lg:space-y-12">
               {/* Category, Brand & Collection */}
               <div className="flex items-center flex-wrap gap-2 text-sm text-gray-500">
                 <Link
@@ -198,7 +159,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p className="text-gray-600 leading-relaxed text-lg">{product.description}</p>
 
               {/* Variants */}
-              <div className="space-y-8 pt-4">
+              <div className="space-y-10 pt-8">
                 {/* Colors */}
                 {product.colors.length > 0 && (
                   <div>
@@ -280,8 +241,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Actions */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a 
+              <div className="flex flex-col sm:flex-row gap-4 pt-10">
+                <a
                   href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi, I'm interested in the ${encodeURIComponent(product.name)}. Please provide pricing and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -295,9 +256,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   Call Us
                 </Link>
               </div>
-              
+
               {/* Contact Info */}
-              <div className="bg-gray-50 border border-gray-200 p-6 rounded">
+              <div className="bg-gray-50 border border-gray-200 p-6 rounded-lg">
                 <p className="text-sm text-gray-600 mb-2">
                   <strong>Need help?</strong> Our team is here to assist you.
                 </p>
@@ -308,9 +269,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </p>
               </div>
 
-              {/* Trust Badges */}
-              <div className="flex flex-col gap-4 pt-8 mt-8 border-t border-gray-200">
-                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+               {/* Trust Badges */}
+              <div className="flex flex-col gap-5 pt-12 mt-10 border-t border-gray-200">
+                <div className="flex items-start gap-4 rounded-lg border border-gray-200 p-5 bg-gray-50">
                   <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Truck className="w-5 h-5" />
                   </div>
@@ -319,7 +280,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="text-xs text-gray-500">Within Accra</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+                <div className="flex items-start gap-4 rounded-lg border border-gray-200 p-5 bg-gray-50">
                   <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Shield className="w-5 h-5" />
                   </div>
@@ -328,7 +289,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="text-xs text-gray-500">Premium products</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 rounded border border-gray-200 p-4 bg-gray-50">
+                <div className="flex items-start gap-4 rounded-lg border border-gray-200 p-5 bg-gray-50">
                   <div className="w-10 h-10 flex items-center justify-center bg-white text-[var(--geowags-red)] border border-gray-200">
                     <Check className="w-5 h-5" />
                   </div>
@@ -343,19 +304,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           {/* Specifications */}
           {specEntries.length > 0 && (
-            <div className="mt-20 lg:mt-28 pt-16 lg:pt-20 border-t border-gray-200">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+            <div className="mt-24 lg:mt-32 pt-20 lg:pt-24 border-t border-gray-200">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
                 <h2 className="heading-2 text-gray-900">Specifications</h2>
                 <p className="text-sm text-gray-500">
                   Material details and care to help you plan your project.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
                 {specEntries.map(([key, value]) => (
                   <div
                     key={key}
-                    className="flex items-start justify-between gap-4 p-4 border border-gray-200 bg-white"
+                    className="flex items-start justify-between gap-4 p-5 border border-gray-200 bg-white rounded-lg"
                   >
                     <span className="text-xs uppercase tracking-wide text-gray-500">
                       {key.replace(/([A-Z])/g, " $1").trim()}
@@ -372,9 +333,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       {/* Related Products */}
-      <section className="py-20 md:py-24 lg:py-32 bg-gray-50">
+      <section className="py-24 md:py-28 lg:py-36 bg-gray-50">
         <div className="container max-w-7xl">
-          <h2 className="heading-2 text-gray-900 mb-10 lg:mb-14">Related Products</h2>
+          <h2 className="heading-2 text-gray-900 mb-12 lg:mb-16">Related Products</h2>
           <ProductGrid products={relatedProducts} />
         </div>
       </section>

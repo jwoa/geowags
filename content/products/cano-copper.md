@@ -9,6 +9,11 @@ images:
   - url: "/images/products/cano-copper/K101K.jpg"
     alt: "Cano Copper"
     primary: true
+  - url: "/images/products/cano-copper/K102K.jpg"
+    alt: "Cano Copper"
+    primary: false
+  - url: "/images/products/cano-copper/K102K_1.jpg"
+    alt: "Cano Copper"
+    primary: false
 ---
-
 Premium Cano Copper from Geowags. Contact us for specifications and pricing.

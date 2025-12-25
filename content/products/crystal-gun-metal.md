@@ -6,9 +6,11 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/crystal-gun-metal/K103K_1.jpg"
+  - url: "/images/products/crystal-gun-metal/K103K.jpg"
     alt: "Crystal Gun Metal"
     primary: true
+  - url: "/images/products/crystal-gun-metal/K103K_1.jpg"
+    alt: "Crystal Gun Metal"
+    primary: false
 ---
-
 Premium Crystal Gun Metal from Geowags. Contact us for specifications and pricing.

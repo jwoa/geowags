@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Award, Users, Target, Eye, Heart, CheckCircle } from "lucide-react";
+import { ArrowRight, Award, Users, Target, Eye, Heart } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -33,37 +33,37 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2010", title: "Founded", description: "Geowags was established in Accra with a vision to bring premium home products to Ghana." },
-  { year: "2014", title: "Expanded", description: "Opened our flagship showroom and expanded our product range to include bathroom fixtures." },
-  { year: "2018", title: "Growth", description: "Partnered with international brands and became a trusted supplier for architects and designers." },
-  { year: "2023", title: "Innovation", description: "Launched our digital platform to serve customers nationwide with enhanced convenience." },
+  { year: "1981", title: "Founded", description: "Geowags was established by Mr. George Wiafe-Agyekum as a sole proprietorship, bringing quality sanitary ware to the Ghanaian market." },
+  { year: "1990", title: "Incorporated", description: "The company was incorporated as a limited liability company, expanding operations and establishing a network of showrooms across Ghana." },
+  { year: "2000s", title: "Global Partnerships", description: "Partnered with world-leading manufacturers including Vado (UK), Grespania (Spain), Gala (Spain), and Reginox (Netherlands)." },
+  { year: "2018", title: "Digital Expansion", description: "Launched comprehensive online presence, making our full product catalog accessible to customers nationwide." },
 ];
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
+  { value: "40+", label: "Years Experience" },
   { value: "5,000+", label: "Happy Customers" },
-  { value: "500+", label: "Products" },
+  { value: "600+", label: "Products" },
   { value: "30+", label: "Team Members" },
 ];
 
 const team = [
   {
-    name: "Mr. George Wiafe Agyekum",
-    role: "C.E.O",
+    name: "Mr. George Wiafe-Agyekum",
+    role: "Founder & C.E.O",
     image: "/images/team/george-wiafe-agyekum.png",
-    description: "Founder and visionary leader, Mr. George has been the driving force behind Geowags' growth and commitment to quality.",
+    description: "Founded Geowags in 1981 with a vision to make quality building materials accessible to Ghanaians. For over four decades, Mr. George has built lasting partnerships with world-leading manufacturers.",
   },
   {
-    name: "Mr. Kwame Wiafe Agyekum",
+    name: "Mr. Kwame Wiafe-Agyekum",
     role: "Managing Director",
     image: "/images/team/kwame-wiafe-agyekum.png",
-    description: "Overseeing day-to-day operations, Mr. Kwame ensures excellence in customer service and product delivery.",
+    description: "Leading operations and strategic growth, Mr. Kwame continues the family legacy of quality and customer excellence that has defined Geowags since 1981.",
   },
   {
     name: "Mr. Eric Abrakwah",
     role: "General Manager",
     image: "/images/team/eric-abrakwah.png",
-    description: "With extensive industry experience, Mr. Eric manages our team and maintains our high standards of service.",
+    description: "With deep expertise in building materials, Mr. Eric oversees our showroom operations and ensures customers receive expert guidance on product selection.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
             <span className="hero__eyebrow">About Us</span>
             <h1 className="heading-display">Building Beautiful Spaces Together</h1>
             <p className="body-large text-subtle">
-              For over a decade, Geowags has been Ghana&apos;s trusted partner in transforming houses into homes. We bring world-class products and expert guidance to every project.
+              For over four decades, Geowags has been Ghana&apos;s trusted partner in transforming houses into homes. We bring world-class products and expert guidance to every project.
             </p>
           </div>
         </div>
@@ -110,24 +110,28 @@ export default function AboutPage() {
               <h2 className="heading-1">A Legacy of Quality & Service</h2>
               <div className="stack-md text-subtle">
                 <p>
-                  Geowags was founded with a simple but powerful mission: to make
-                  premium home improvement products accessible to everyone in Ghana.
-                  What started as a small tile showroom in Accra has grown into the
-                  country&apos;s leading destination for housewares, tiles, and bathroom
-                  fixtures.
+                  Geowags was founded in 1981 by Mr. George Wiafe-Agyekum with a 
+                  simple but powerful mission: to make quality sanitary ware, tiles, 
+                  paints, and kitchen products available to the Ghanaian market.
                 </p>
                 <p>
-                  Our founder&apos;s passion for design and quality craftsmanship laid
-                  the foundation for what Geowags represents today. We&apos;ve built
-                  lasting relationships with the world&apos;s finest manufacturers,
-                  allowing us to offer products that combine exceptional quality with
-                  competitive pricing.
+                  What started as a sole proprietorship has grown into one of 
+                  Ghana&apos;s most trusted names in building materials. In 1990, the 
+                  company was incorporated as a limited liability company, marking 
+                  a new chapter of growth and expansion across the country.
                 </p>
                 <p>
-                  Today, we serve thousands of homeowners, architects, interior
-                  designers, and contractors across Ghana. Our team of experts is
-                  dedicated to helping every customer find the perfect products for
-                  their unique vision.
+                  The name Geowags has long been synonymous with quality, design, 
+                  and style when it comes to bathrooms, paints, and kitchens. We 
+                  represent tested and trusted brands from around the world — Vado 
+                  from the UK, Grespania from Spain, Gala from Spain, Reginox from 
+                  the Netherlands, and many others.
+                </p>
+                <p>
+                  As a fresh and innovative company, we pride ourselves on our 
+                  choice of products — quality branded goods at exceptional value 
+                  for money. Our experienced staff is always at hand to offer 
+                  advice and an exceptional level of customer service.
                 </p>
               </div>
               <Link href="/products" className="btn btn-primary btn-large group">

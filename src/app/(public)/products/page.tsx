@@ -114,7 +114,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
               {/* Pagination would go here */}
               {productCardData.length > 12 && (
-                <div className="flex-center" style={{ marginTop: "3.5rem" }}>
+                <div className="flex-center" style={{ marginTop: "5rem" }}>
                   <nav className="flex-row" style={{ gap: "0.5rem" }} aria-label="Pagination">
                     <button className="btn btn-secondary btn-small" disabled>
                       Previous

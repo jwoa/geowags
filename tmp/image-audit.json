@@ -1,0 +1,472 @@
+{
+  "summary": {
+    "totalProducts": 310,
+    "productsWithArchiveImages": 76,
+    "totalArchiveImagesMapped": 141,
+    "productsNeedCopying": 33,
+    "productsWithoutImages": 0,
+    "orphanedImages": 4
+  },
+  "toCopy": [
+    {
+      "productSlug": "alpina-brushed",
+      "images": [
+        {
+          "file": "K755K_1.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K755K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "amanzi-hot-tap",
+      "images": [
+        {
+          "file": "K762K_2.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K762K_3.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "amur-brushed-nickel",
+      "images": [
+        {
+          "file": "K1050K_1.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K1050K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "astoria-brushed-nickel",
+      "images": [
+        {
+          "file": "K105K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "belaya-brushed-inox",
+      "images": [
+        {
+          "file": "K1045K.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K1045K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "belaya",
+      "images": [
+        {
+          "file": "K104K.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K104K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "cano-copper",
+      "images": [
+        {
+          "file": "K102K.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K102K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "cano-gold",
+      "images": [
+        {
+          "file": "K101K.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "cano-gun-metal",
+      "images": [
+        {
+          "file": "K100K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "cedar-chrome",
+      "images": [
+        {
+          "file": "K1040K_6.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "centurio-10-r-inset-all-specifications",
+      "images": [
+        {
+          "file": "OMI-100-CC_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-100-SB_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-100M-CC_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-100_1.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-100_2.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-133_1.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-133_2.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "OMI-133_main.jpg",
+          "brand": "reginox"
+        }
+      ]
+    },
+    {
+      "productSlug": "confluo-premium-line-elements",
+      "images": [
+        {
+          "file": "Confluo-Drops-2-15X15-NO-FLANGE-1.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Drops-2-15X15-NO-FLANGE-2.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-black-glass.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-gold-product.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-gold.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-line-product.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-line.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Premium-product-1.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Wall-elements.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Wall-gold.jpg",
+          "brand": "pestan"
+        },
+        {
+          "file": "Confluo-Wall.jpg",
+          "brand": "pestan"
+        }
+      ]
+    },
+    {
+      "productSlug": "crystal-gun-metal",
+      "images": [
+        {
+          "file": "K103K.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "flint-black-chrome",
+      "images": [
+        {
+          "file": "K1035K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "flint-chrome",
+      "images": [
+        {
+          "file": "K1030K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "gila-chrome",
+      "images": [
+        {
+          "file": "K2010K_4.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K2010K_5.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "japura-black-chrome",
+      "images": [
+        {
+          "file": "K1015K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "jerico-chrome",
+      "images": [
+        {
+          "file": "K1100K.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "kludi-zenta-hd-schwarz",
+      "images": [
+        {
+          "file": "K821K_2.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K821K_3.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K914K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "lena-chrome",
+      "images": [
+        {
+          "file": "K750K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "leon-chrome",
+      "images": [
+        {
+          "file": "K2000K_2.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K2000K_3.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "levisa-chrome",
+      "images": [
+        {
+          "file": "K1080K_9.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "narmada-chrome",
+      "images": [
+        {
+          "file": "K1090K_10.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K1090K_11-1.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K1090K_11.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "nova",
+      "images": [
+        {
+          "file": "K775K_1.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K775K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "parana-chrome",
+      "images": [
+        {
+          "file": "K1070K.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K1070K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "pearl-chrome",
+      "images": [
+        {
+          "file": "K1020K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "regidrain-r-inset-all-specifications",
+      "images": [
+        {
+          "file": "SYN-100-CC_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "SYN-100-SB_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "SYN-100E-SB_main.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "SYN-109S_main_0.jpg",
+          "brand": "reginox"
+        },
+        {
+          "file": "SYN-233_0.jpg",
+          "brand": "reginox"
+        }
+      ]
+    },
+    {
+      "productSlug": "wolga-chrome",
+      "images": [
+        {
+          "file": "K780K_1.jpg",
+          "brand": "kludi"
+        },
+        {
+          "file": "K780K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "xinga-brushed",
+      "images": [
+        {
+          "file": "K772K_3.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "xinga",
+      "images": [
+        {
+          "file": "K770K_2.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "yadkin-chrome",
+      "images": [
+        {
+          "file": "K1060K_1.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "yampa-black",
+      "images": [
+        {
+          "file": "K1055K_4.jpg",
+          "brand": "kludi"
+        }
+      ]
+    },
+    {
+      "productSlug": "yukon-chrome",
+      "images": [
+        {
+          "file": "K1000K_4.jpg",
+          "brand": "kludi"
+        }
+      ]
+    }
+  ],
+  "productsMissingImages": [],
+  "orphanedImages": [
+    {
+      "file": "K101K_1.jpg",
+      "brand": "kludi"
+    },
+    {
+      "file": "K1025K_2.jpg",
+      "brand": "kludi"
+    },
+    {
+      "file": "K105K.jpg",
+      "brand": "kludi"
+    },
+    {
+      "file": "K785K_2.jpg",
+      "brand": "kludi"
+    }
+  ]
+}

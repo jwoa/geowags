@@ -24,6 +24,16 @@
 /geowags-archive/**/**/**/*
 /geowags-archive/**/**/**/**
 /geowags-archive/**/**/**/**/*
+/organized-archive
+/organized-archive/*
+/organized-archive/**
+/organized-archive/**/*
+/organized-archive/**/**
+/organized-archive/**/**/*
+/organized-archive/**/**/**
+/organized-archive/**/**/**/*
+/organized-archive/**/**/**/**
+/organized-archive/**/**/**/**/*
 # next.js
 /.next/
 /out/

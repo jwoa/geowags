@@ -8,12 +8,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/crab/B10_En2_Crab.jpg"
-    alt: "Crab"
-    primary: true
-  - url: "/images/products/crab/B10_En2_Crab_Det2-uai.jpg"
-    alt: "Crab"
-    primary: false
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 ModeloCrabMaterialAcrílica extensaMedidasØ 170 cm

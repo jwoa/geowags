@@ -1,6 +1,6 @@
 ---
-name: "Ágata Column"
-slug: "agata-column"
+name: "Largo 3620"
+slug: "largo"
 category: "bathroom"
 featured: false
 new: false
@@ -11,4 +11,4 @@ images:
     primary: undefined
 ---
 
-Premium Ágata Column from Geowags. Contact us for specifications and pricing.
+Premium Largo 3620 from Geowags. Contact us for specifications and pricing.

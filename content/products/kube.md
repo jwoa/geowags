@@ -1,6 +1,6 @@
 ---
-name: "Ágata Column"
-slug: "agata-column"
+name: "Kube"
+slug: "kube"
 category: "bathroom"
 featured: false
 new: false
@@ -11,4 +11,4 @@ images:
     primary: undefined
 ---
 
-Premium Ágata Column from Geowags. Contact us for specifications and pricing.
+Premium Kube from Geowags. Contact us for specifications and pricing.

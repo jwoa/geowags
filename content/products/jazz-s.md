@@ -6,9 +6,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/jazz-s/B10_Encastrada_JazzS.jpg"
-    alt: "Jazz S"
-    primary: true
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 Premium Jazz S from Geowags. Contact us for specifications and pricing.

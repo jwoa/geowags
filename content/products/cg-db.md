@@ -1,6 +1,6 @@
 ---
-name: "Ágata Column"
-slug: "agata-column"
+name: "CG DB 3220"
+slug: "cg-db"
 category: "bathroom"
 featured: false
 new: false
@@ -11,4 +11,4 @@ images:
     primary: undefined
 ---
 
-Premium Ágata Column from Geowags. Contact us for specifications and pricing.
+Premium CG DB 3220 from Geowags. Contact us for specifications and pricing.

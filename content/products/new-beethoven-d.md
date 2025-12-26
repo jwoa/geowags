@@ -1,6 +1,6 @@
 ---
-name: "Ágata Column"
-slug: "agata-column"
+name: "New Beethoven D 100"
+slug: "new-beethoven-d"
 category: "bathroom"
 featured: false
 new: false
@@ -11,4 +11,4 @@ images:
     primary: undefined
 ---
 
-Premium Ágata Column from Geowags. Contact us for specifications and pricing.
+Premium New Beethoven D 100 from Geowags. Contact us for specifications and pricing.

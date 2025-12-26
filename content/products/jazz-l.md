@@ -6,9 +6,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/jazz-l/B10_Encastrada_JazzL.jpg"
-    alt: "Jazz L"
-    primary: true
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 Premium Jazz L from Geowags. Contact us for specifications and pricing.

@@ -6,9 +6,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/dock-taupe/GRESPANIA-Catalogo-GENERAL-2018-baja_010.jpg"
-    alt: "Dock"
-    primary: true
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 Premium Dock from Geowags. Contact us for specifications and pricing.

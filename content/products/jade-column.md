@@ -6,9 +6,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/jade-column/C3827701-2.jpg"
-    alt: "Jade Column"
-    primary: true
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 Premium Jade Column from Geowags. Contact us for specifications and pricing.

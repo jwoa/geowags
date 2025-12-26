@@ -6,9 +6,9 @@ featured: false
 new: false
 active: true
 images:
-  - url: "/images/products/palace-crema/palace-crema.png"
-    alt: "Palace crema"
-    primary: true
+  - url: "undefined"
+    alt: "undefined"
+    primary: undefined
 ---
 
 Premium Palace crema from Geowags. Contact us for specifications and pricing.

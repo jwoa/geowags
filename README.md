@@ -198,7 +198,7 @@ Simply connect your repository and deploy. No additional configuration needed.
 
 ## 📄 License
 
-Private - All rights reserved.
+Private - All rights reserved
 
 ## 👥 Contact
 

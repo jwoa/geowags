@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const specEntries = Object.entries(specifications);
 
   return (
-    <div className="page-layout">
+    <div className="page-layout mb-[50px]">
       {/* Breadcrumb */}
       <nav className="bg-gray-50 py-8 border-b border-gray-100" aria-label="Breadcrumb">
         <div className="container max-w-7xl">
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Product Details */}
       <section className="py-16 md:py-20 lg:py-28">
         <div className="container max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start mt-10">
             {/* Gallery */}
             <ProductGallery
               images={product.images}
@@ -156,7 +156,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h1 className="text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 leading-tight tracking-tight">{product.name}</h1>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-lg">{product.description}</p>
+              <p className="text-gray-600 leading-relaxed text-lg mb-[15px]">{product.description}</p>
 
               {/* Variants */}
               <div className="space-y-10 pt-8">
@@ -258,7 +258,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Contact Info */}
-              <div className="bg-gray-50 border border-gray-200 p-6 rounded-lg">
+              <div className="bg-gray-50 border border-gray-200 p-[10px] rounded-lg mt-5 mb-5">
                 <p className="text-sm text-gray-600 mb-2">
                   <strong>Need help?</strong> Our team is here to assist you.
                 </p>
@@ -335,7 +335,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Related Products */}
       <section className="py-24 md:py-28 lg:py-36 bg-gray-50">
         <div className="container max-w-7xl">
-          <h2 className="heading-2 text-gray-900 mb-12 lg:mb-16">Related Products</h2>
+          <h2 className="heading-2 text-gray-900 mt-10 mb-5">Related Products</h2>
           <ProductGrid products={relatedProducts} />
         </div>
       </section>

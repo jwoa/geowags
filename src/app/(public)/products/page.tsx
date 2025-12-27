@@ -77,7 +77,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     <div className="page-layout">
       {/* Page Header */}
       <section className="page-header">
-        <div className="container">
+        <div className="site-container">
           <div className="page-header__body">
             <h1 className="heading-1">Our Products</h1>
             <p className="body-large text-subtle">
@@ -90,7 +90,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
       {/* Products Section */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="products-layout">
             {/* Sidebar Filters */}
             <Suspense fallback={<div aria-hidden className="hide-mobile" style={{ width: "280px" }} />}>

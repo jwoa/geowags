@@ -61,7 +61,7 @@ export const Header = () => {
           isScrolled && "site-header--scrolled"
         )}
       >
-        <div className="container site-header__container">
+        <div className="site-container site-header__container">
           {/* Logo */}
           <Logo variant="default" size="md" />
 

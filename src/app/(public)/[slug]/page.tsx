@@ -55,7 +55,7 @@ export default async function StaticPage({ params }: StaticPageProps) {
     <div className="page-layout">
       {/* Page Header */}
       <section className="page-header">
-        <div className="container">
+        <div className="site-container">
           <div className="page-header__body" style={{ maxWidth: "48rem" }}>
             <h1 className="heading-1">{page.title}</h1>
             {page.description && (
@@ -78,7 +78,7 @@ export default async function StaticPage({ params }: StaticPageProps) {
 
       {/* Page Content */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="surface" style={{ maxWidth: "48rem", margin: "0 auto", padding: "2.5rem" }}>
             <article className="prose" dangerouslySetInnerHTML={{ __html: page.contentHtml }} />
           </div>

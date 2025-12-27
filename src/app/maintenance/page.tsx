@@ -16,7 +16,7 @@ export default function MaintenancePage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="section w-full">
-        <div className="container flex flex-col items-center gap-14 md:gap-16">
+        <div className="site-container flex flex-col items-center gap-14 md:gap-16">
           <div className="max-w-3xl text-center stack-xl">
             <p className="caption text-gray-500 tracking-[0.2em] uppercase">
               Maintenance

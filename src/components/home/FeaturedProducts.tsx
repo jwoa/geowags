@@ -35,7 +35,7 @@ export const FeaturedProducts = ({ products }: FeaturedProductsProps) => {
 
   return (
     <section className="section section-muted">
-      <div className="container">
+      <div className="site-container">
         {/* Section Header */}
         <div className="flex-between stack-md" style={{ alignItems: "flex-end", gap: "1.5rem" }}>
           <div className="stack-sm">

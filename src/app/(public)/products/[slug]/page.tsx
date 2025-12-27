@@ -76,7 +76,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="page-layout mb-[50px]">
       {/* Breadcrumb */}
       <nav className="bg-gray-50 py-8 border-b border-gray-100" aria-label="Breadcrumb">
-        <div className="container max-w-7xl">
+        <div className="site-container max-w-7xl">
           <ol className="flex items-center gap-2 text-sm">
             <li>
               <Link href="/" className="text-gray-500 hover:text-gray-700 transition-colors">
@@ -108,7 +108,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Product Details */}
       <section className="py-16 md:py-20 lg:py-28">
-        <div className="container max-w-7xl">
+        <div className="site-container max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-28 items-start mt-10">
             {/* Gallery */}
             <ProductGallery
@@ -334,7 +334,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Related Products */}
       <section className="py-24 md:py-28 lg:py-36 bg-gray-50">
-        <div className="container max-w-7xl">
+        <div className="site-container max-w-7xl">
           <h2 className="heading-2 text-gray-900 mt-10 mb-5">Related Products</h2>
           <ProductGrid products={relatedProducts} />
         </div>

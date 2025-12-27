@@ -34,7 +34,7 @@ export const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
 
   return (
     <section id="categories" className="section">
-      <div className="container">
+      <div className="site-container">
         {/* Section Header */}
         <div className="section-header">
           <motion.span

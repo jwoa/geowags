@@ -78,7 +78,7 @@ export default function AboutPage() {
     <div className="page-layout">
       {/* Hero Section */}
       <section className="page-header">
-        <div className="container">
+        <div className="site-container">
           <div className="page-header__body">
             <span className="hero__eyebrow">About Us</span>
             <h1 className="heading-display">Building Beautiful Spaces Together</h1>
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <section id="story" className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="about-grid">
             {/* Image */}
             <div className="about-visual">
@@ -145,7 +145,7 @@ export default function AboutPage() {
 
       {/* Stats Section */}
       <section className="page-content section-muted">
-        <div className="container">
+        <div className="site-container">
           <div className="grid-responsive grid-four">
             {stats.map((stat) => (
               <div key={stat.label} className="surface text-center stack-sm">
@@ -161,7 +161,7 @@ export default function AboutPage() {
 
       {/* Mission & Vision */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="grid-two">
             <div className="surface stack-md">
               <div className="feature-card__icon" style={{ background: "var(--geowags-red)", color: "white" }}>
@@ -194,7 +194,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="page-content section-muted">
-        <div className="container">
+        <div className="site-container">
           <div className="section-header">
             <span className="caption text-primary mb-4 block">What Drives Us</span>
             <h2 className="heading-1">Our Core Values</h2>
@@ -222,7 +222,7 @@ export default function AboutPage() {
 
       {/* Team Photo */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="section-header">
             <span className="caption text-primary mb-4 block">Our Team</span>
             <h2 className="heading-1">The People Behind Geowags</h2>
@@ -273,7 +273,7 @@ export default function AboutPage() {
 
       {/* Timeline */}
       <section className="page-content section-muted">
-        <div className="container">
+        <div className="site-container">
           <div className="section-header">
             <span className="caption text-primary mb-4 block">Our Journey</span>
             <h2 className="heading-1">Key Milestones</h2>
@@ -295,7 +295,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="section bg-[var(--geowags-red)]">
-        <div className="container text-center">
+        <div className="site-container text-center">
           <h2 className="heading-1 text-white mb-6">Ready to Start Your Project?</h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Visit our showroom or get in touch with our team. We&apos;re here to help

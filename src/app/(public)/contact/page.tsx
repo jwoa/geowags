@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Metadata } from "next";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ArrowRight, XCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_CONFIG } from "@/lib/constants";
+import { submitContactForm, type ContactFormData } from "@/app/actions/contactActions";
 
 const contactInfo = [
   {
@@ -44,6 +44,11 @@ type FormData = {
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
+type SubmissionStatus = {
+  success: boolean | null;
+  error: string | null;
+};
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -55,7 +60,10 @@ export default function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>({
+    success: null,
+    error: null,
+  });
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -96,30 +104,33 @@ export default function ContactPage() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmissionStatus({ success: null, error: null });
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const result = await submitContactForm(formData as ContactFormData);
 
     setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      subject: "",
-      message: "",
-    });
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSuccess(false), 5000);
+    if (result.success) {
+      setSubmissionStatus({ success: true, error: null });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: "",
+      });
+      setTimeout(() => setSubmissionStatus({ success: null, error: null }), 5000);
+    } else {
+      setSubmissionStatus({ success: false, error: result.error || "Failed to send message. Please try again." });
+    }
   };
 
   return (
     <div className="page-layout">
       {/* Hero Section */}
       <section className="page-header">
-        <div className="container">
+        <div className="site-container">
           <div className="page-header__body" style={{ maxWidth: "40rem" }}>
             <span className="hero__eyebrow">
               Contact Us
@@ -138,7 +149,7 @@ export default function ContactPage() {
 
       {/* Contact Info Cards */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="grid-responsive grid-four">
             {contactInfo.map((info) => {
               const IconComponent = info.icon;
@@ -173,7 +184,7 @@ export default function ContactPage() {
 
       {/* Main Content */}
       <section className="page-content">
-        <div className="container">
+        <div className="site-container">
           <div className="about-grid">
             {/* Contact Form */}
             <div className="stack-lg">
@@ -185,7 +196,7 @@ export default function ContactPage() {
               </div>
 
               <AnimatePresence mode="wait">
-                {isSuccess ? (
+                {submissionStatus.success === true ? (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -200,6 +211,29 @@ export default function ContactPage() {
                     <p className="text-subtle" style={{ color: "#15803d" }}>
                       Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                     </p>
+                  </motion.div>
+                ) : submissionStatus.success === false ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="surface text-center"
+                    style={{ background: "#fef2f2", borderColor: "#fecaca" }}
+                  >
+                    <div className="flex-center" style={{ width: "4rem", height: "4rem", margin: "0 auto 1rem", background: "#fee2e2", color: "#dc2626", borderRadius: "9999px" }}>
+                      <XCircle className="w-8 h-8" />
+                    </div>
+                    <h3 className="heading-4" style={{ color: "#991b1b" }}>Oops! Something went wrong</h3>
+                    <p className="text-subtle" style={{ color: "#b91c1c" }}>
+                      {submissionStatus.error || "Failed to send message. Please try again."}
+                    </p>
+                    <button
+                      onClick={() => setSubmissionStatus({ success: null, error: null })}
+                      className="btn btn-primary"
+                      style={{ marginTop: "1rem" }}
+                    >
+                      Try Again
+                    </button>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -390,7 +424,7 @@ export default function ContactPage() {
 
       {/* FAQ CTA */}
       <section className="page-content section-muted">
-        <div className="container text-center stack-md">
+        <div className="site-container text-center stack-md">
           <h2 className="heading-3">Have More Questions?</h2>
           <p className="text-subtle">
             Check out our frequently asked questions or reach out directly.

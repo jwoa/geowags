@@ -31,7 +31,7 @@ const features = [
 export const AboutPreview = () => {
   return (
     <section className="section">
-      <div className="container">
+      <div className="site-container">
         <div className="about-grid">
           {/* Content */}
           <div className="stack-md">

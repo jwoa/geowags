@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <footer className="site-footer">
       {/* Main Footer */}
-      <div className="container footer-main">
+      <div className="site-container footer-main">
         <div className="footer-grid">
           {/* Brand Column */}
           <div className="footer-col footer-col--brand">
@@ -144,7 +144,7 @@ export const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="footer-bottom">
-        <div className="container">
+        <div className="site-container">
           <div className="footer-bottom__content">
             <p className="text-subtle">
               © {currentYear} {SITE_CONFIG.name}. All rights reserved.

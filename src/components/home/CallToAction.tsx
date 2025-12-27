@@ -15,7 +15,7 @@ export const CallToAction = () => {
         }}
       />
 
-      <div className="container relative">
+      <div className="site-container relative">
         <div className="cta__content">
           <motion.span
             initial={{ opacity: 0, y: 20 }}

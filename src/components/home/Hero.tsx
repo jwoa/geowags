@@ -93,7 +93,7 @@ export const Hero = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="container hero__content">
+      <div className="site-container hero__content">
         <div style={{ maxWidth: "56rem" }}>
           <AnimatePresence mode="wait">
             <motion.div
